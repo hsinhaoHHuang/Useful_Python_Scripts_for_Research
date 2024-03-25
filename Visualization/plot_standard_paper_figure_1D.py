@@ -153,6 +153,10 @@ ax.set_ylim( 0.3*Table_y_min, 3.0*Table_y_max )
 ax.legend( loc='upper right' )
 
 # ticks and tick labels
+
+ax.xaxis.get_ticklocs(minor=True)
+ax.yaxis.get_ticklocs(minor=True)
+ax.minorticks_on()
 ax.xaxis.set_ticks_position('both')
 ax.yaxis.set_ticks_position('both')
 ax.tick_params(which='both',direction='in')
