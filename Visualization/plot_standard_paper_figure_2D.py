@@ -65,8 +65,8 @@ axis               = 'z'               # direction for projection
 zoom               = 1                 # region for main plot
 
 slab_thickness     = 1.0               # slab thickness for the projection (in plotting unit)
-annotated_radius   = 10.0              # radius of sphere to be annotated in the figure (in plotting unit)
 annotated_scale    = 10                # length scale to be annotated in the figure (in plotting unit)
+annotated_radius   = 10.0              # radius of sphere to be annotated in the figure (in plotting unit)
 
 colormap           = 'viridis'         # ['viridis', 'plasma', 'inferno', 'magma', 'cividis']
 color_lim_min      = 1.e5              # color bar upper limit for projection (in plotting unit)
@@ -127,8 +127,8 @@ def main() -> None:
 
         ###################################################################################################
         # Annotated information
-        Data_Annotated_radius = ds.arr( annotated_radius, Plotting_UNIT_L )
         Data_Annotated_scale  = ds.arr( annotated_scale,  Plotting_UNIT_L )
+        Data_Annotated_radius = ds.arr( annotated_radius, Plotting_UNIT_L )
 
         ###################################################################################################
         # Region to plot
