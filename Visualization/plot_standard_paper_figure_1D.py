@@ -6,11 +6,7 @@ import numpy as np
 
 
 ####################################################
-# Part 0. Setting
-####################################################
-
-####################################################
-# Part 0.1 Genereal Setting
+# Genereal Setting
 ####################################################
 dpi        = 600
 FONT_SIZE  = 8.0
@@ -50,127 +46,116 @@ plt.rcParams['mathtext.bf']       = 'STIXGeneral:italic:bold'
 
 
 ####################################################
-# Part 0.2 Setting for Plotting
+# Setting for Plotting
 ####################################################
-prof_color_FDM_16  = 'C3'       # color for FDM m_22=1.6 profile
-prof_color_FDM_08  = 'C0'       # color for FDM m_22=1.6 profile
-prof_color_CDM     = 'C2'       # color for FDM m_22=1.6 profile
-prof_dens_min      = 3.9720e4   # upper limit for profile plot (in Msun/kpc**3)
-prof_dens_max      = 2.3832e8   # lower limit for profile plot (in Msun/kpc**3)
-prof_x_min         = 1.0e-1     # max r for profile plot (in kpc)
-prof_x_max         = 3.0e1      # min r for profile plot (in kpc)
+n_rows        = 2           # number of rows in the figure panels
+n_cols        = 3           # number of columns in the figure panels
 
-cm                 = 1/2.54     # centimeters in inches
-fig_size_x         = 16*cm      # output figure size
-fig_size_y         = 9*cm       # output figure size
-fig                = plt.figure(1,(fig_size_x, fig_size_y), dpi=dpi)
+color_1       = 'C3'        # color for Table_1
+color_2       = 'C0'        # color for Table_2
+color_ref     = 'C2'        # color for Reference
 
+axis_y_min    = 1.0e+2      # min for y axis
+axis_y_max    = 1.0e+8      # max for y axis
+axis_x_min    = 1.0e-1      # min for x axis
+axis_x_max    = 1.0e+2      # max for x axis
+
+axis_x_label  = r'$\mathit{r}\ ({\rm kpc})}$'
+axis_y_label  = r'$\mathit{\rho}\ ({\rm M}_{\odot}{\rm kpc}^{\rm -3})$'
+
+cm            = 1/2.54      # centimeters in inches
+fig_size_x    = 16*cm       # output figure size
+fig_size_y    = (fig_size_x-1*cm)/n_cols*n_rows
+fig           = plt.figure( 1, (fig_size_x, fig_size_y), dpi=dpi )
 ###################################################################################################
 
 
 ####################################################
-# Part 0.3 Read the data and parameters
+# Read the data and parameters
 ####################################################
 # path
-Table_Path     = './'
-Table_Filename = ''
+Table_1_path     = np.empty( n_rows*n_cols, dtype=object )
+Table_1_Path[0]  = './Table_1_000000'
+Table_1_Path[1]  = './Table_1_000001'
+Table_1_Path[2]  = './Table_1_000002'
+Table_1_Path[3]  = './Table_1_000003'
+Table_1_Path[4]  = './Table_1_000004'
+Table_1_Path[5]  = './Table_1_000005'
 
-# load the table
-Table_Data_x, Table_Data_y = np.loadtxt( Table_Path+Table_Filename, unpack=True )
-
+Table_2_path     = np.empty( n_rows*n_cols, dtype=object )
+Table_2_Path[0]  = './Table_2_000000'
+Table_2_Path[1]  = './Table_2_000001'
+Table_2_Path[2]  = './Table_2_000002'
+Table_2_Path[3]  = './Table_2_000003'
+Table_2_Path[4]  = './Table_2_000004'
+Table_2_Path[5]  = './Table_2_000005'
 ###################################################################################################
 
 
-####################################################
-# Part 0.4 Physical Constants and Variables
-####################################################
-##
-Table_x_max = np.max(Table_Data_x)
-Table_x_min = np.min(Table_Data_x)
-Table_y_max = np.max(Table_Data_y)
-Table_y_max = np.max(Table_Data_y)
-
-###################################################################################################
-
-
-####################################################
-# Part 0.5 Define Functions
-####################################################
+#  Define Functions
 def Analytical_Ref(x):
+
     y_analytical = np.sin(x)
 
     return y_analytical
 
-###################################################################################################
-
-####################################################
-# Part 2. Profiles
-####################################################
-
-####################################################
-# Part 2.1 Prepare data
-####################################################
-FDM_Units_L_plot = "kpc"
-CDM_Units_L_plot = "kpccm"
-####################################################################################################
-
-Sampling_x = np.linspace(0.0, 2.0*np.pi, 100)
-
-####################################################
-# Part 2.2 Plot profiles
-####################################################
-ax_rect_left     = -0.01             # left boundary of the figure panels
-ax_rect_bottom   =  0.02             # bottom boundary of the figure panels
-ax_rect_width    =  0.97             # width of the figure panels
-ax_rect_height   =  0.96             # height of the figure panels
-
-ax = fig.add_axes( rect=[ax_rect_left, ax_rect_bottom, ax_rect_width, ax_rect_height] )
-
-# plot data
-ax.plot( Table_Data_x, Table_Data_y, '.-',     color=color_1, label='FDM ($m_{22}=1.6$)',  linewidth=LINE_WIDTH    )
-
-# plot analytical reference
-ax.plot( Sampling_x, Analytical_Ref(Sampling_x),  '--', color=color_ref,   label='Analytical Reference',  linewidth=LINE_WIDTH    )
-
-# annotate the arrow and text
-ax.annotate('', xy=(annotated_arrow_x, annotated_arrow_y ), xytext=(annotated_text_x, annotated_text_y), va='bottom', ha='center', arrowprops=dict(arrowstyle='->', color=prof_color_FDM_16,    linewidth=LINE_WIDTH) )
-ax.text(annotated_text_x, annotated_text_y, annotated_text, va='center', ha='left', color=_color_ref)
-
-# x,y scale
-ax.set_xscale("log")
-ax.set_yscale("log")
-
-# x,y labels
-ax.yaxis.set_label_position('left')
-ax.set_xlabel(r'$\mathit{r}\ ({\rm kpc})}$')
-ax.set_ylabel(r'$\mathit{\rho}\ ({\rm M}_{\odot}{\rm kpc}^{\rm -3})$')
-
-# x,y limit
-ax.set_xlim( 0.3*Table_x_min, 3.0*Table_x_max )
-ax.set_ylim( 0.3*Table_y_min, 3.0*Table_y_max )
-
-# legend
-ax.legend( loc='upper right' )
-
-# ticks and tick labels
-
-ax.xaxis.get_ticklocs(minor=True)
-ax.yaxis.get_ticklocs(minor=True)
-ax.minorticks_on()
-ax.xaxis.set_ticks_position('both')
-ax.yaxis.set_ticks_position('both')
-ax.tick_params(which='both',direction='in')
-ax.tick_params(axis='y', which='both', labelleft=False, labelright=True)
-
-####################################################################################################
-####################################################################################################
 
 
-####################################################
-# Part 3. Output files
-####################################################
-fig.set_dpi(dpi)
-fig.set_size_inches(fig_size_x, fig_size_y)
+def main() -> None:
 
-fig.savefig("fig.png", dpi=dpi)
-fig.savefig("fig.pdf", dpi=dpi)
+    # Loop for each panel
+    for panel_idx in range(0, n_rows*n_cols, 1):
+
+        # load the table
+        Table_1_Data_x, Table_1_Data_y = np.loadtxt( Table_1_Path[panel_idx], unpack=True )
+        Table_2_Data_x, Table_2_Data_y = np.loadtxt( Table_2_Path[panel_idx], unpack=True )
+
+        ax  = fig.add_subplot( (n_rows, n_clos, panel_idx+1) )
+
+        # plot data
+        ax.plot( Table_1_Data_x, Table_1_Data_y,             linestyle='.-', color=color_1,  linewidth=LINE_WIDTH, label='1' )
+        ax.plot( Table_2_Data_x, Table_2_Data_y,             linestyle='.-', color=color_2,  linewidth=LINE_WIDTH, label='2' )
+
+        # plot analytical reference
+        Sampling_x = np.linspace( 0.3*np.min(Table_1_Data_x), 3.0*np.max(Table_1_Data_x), 256 )
+
+        ax.plot( Sampling_x,     Analytical_Ref(Sampling_x), linestyle='--', color=color_3,  linewidth=LINE_WIDTH, label='Analytical Reference' )
+
+        # annotate the arrow and text
+        ax.annotate('', xy=(annotated_arrow_x, annotated_arrow_y ), xytext=(annotated_text_x, annotated_text_y), va='bottom', ha='center', arrowprops=dict(arrowstyle='->', color=prof_color_FDM_16,    linewidth=LINE_WIDTH) )
+        ax.text(annotated_text_x, annotated_text_y, annotated_text, va='center', ha='left', color=_color_ref)
+
+        # x,y scale
+        ax.set_xscale( 'log' )
+        ax.set_yscale( 'log' )
+
+        # x,y labels
+        ax.set_xlabel( axis_x_label )
+        ax.set_ylabel( axis_y_label )
+
+        # x,y limit
+        ax.set_xlim( axis_x_min, axis_x_max )
+        ax.set_ylim( axis_y_min, axis_y_max )
+
+        # legend
+        ax.legend( loc='upper right' )
+
+        # ticks and tick labels
+        ax.xaxis.get_ticklocs(minor=True)
+        ax.yaxis.get_ticklocs(minor=True)
+        ax.minorticks_on()
+        ax.xaxis.set_ticks_position('both')
+        ax.yaxis.set_ticks_position('both')
+        ax.tick_params(which='both',direction='in')
+
+    # Output the figure to files
+    plt.tight_layout()
+    fig.set_dpi(dpi)
+    fig.set_size_inches(fig_size_x, fig_size_y)
+
+    fig.savefig( 'fig_standard_paper_figure_1D.png', dpi=dpi )
+    fig.savefig( 'fig_standard_paper_figure_1D.pdf', dpi=dpi )
+
+
+if __name__ == '__main__':
+    main()
