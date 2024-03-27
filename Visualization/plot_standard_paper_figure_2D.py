@@ -91,21 +91,12 @@ fig                = plt.figure( 1,(fig_size_x, fig_size_y), dpi=dpi )
 ###################################################################################################
 # path
 Data_path    = np.empty( n_rows*n_cols, dtype=object )
-Data_path[0] = './'
-Data_path[1] = './'
-Data_path[2] = './'
-Data_path[3] = './'
-Data_path[4] = './'
-Data_path[5] = './'
-
-# data ID
-Data_idx     = np.empty( n_rows*n_cols, dtype=int )
-Data_idx[0]  = 0
-Data_idx[1]  = 1
-Data_idx[2]  = 2
-Data_idx[3]  = 3
-Data_idx[4]  = 4
-Data_idx[5]  = 5
+Data_path[0] = './Data_000000'
+Data_path[1] = './Data_000001'
+Data_path[2] = './Data_000002'
+Data_path[3] = './Data_000003'
+Data_path[4] = './Data_000004'
+Data_path[5] = './Data_000005'
 ###################################################################################################
 
 
@@ -123,7 +114,7 @@ def main() -> None:
 
         ###################################################################################################
         # Load the dataset
-        ds = yt.load( Data_path[panel_idx]+'Data_%06d'%Data_idx[panel_idx] )
+        ds = yt.load( Data_path[panel_idx] )
 
         ###################################################################################################
         # Annotated information
