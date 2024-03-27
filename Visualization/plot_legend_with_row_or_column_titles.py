@@ -17,7 +17,7 @@ def add_row_titles( ax, num_rows, num_cols, row_title ):
     labels_with_title  = row_title + labels
 
     # plot the legend
-    legend = ax.legend(handles_with_title, labels_with_title, ncol=num_cols+1, loc='upper right', columnspacing=1.0)
+    legend = ax.legend(handles_with_title, labels_with_title, ncol=num_cols+1, loc='upper right', columnspacing=1.0, handlelength=5.0)
     for vpack in legend._legend_handle_box.get_children()[:1]:
         for hpack in vpack.get_children():
             hpack.get_children()[0].set_width(0)
@@ -39,7 +39,7 @@ def add_col_titles( ax, num_rows, num_cols, col_title ):
         labels_with_title  +=     [col_title[j]] +  labels[j*num_rows:(j+1)*num_rows]
 
     # plot the legend
-    legend = ax.legend(handles_with_title, labels_with_title, ncol=num_cols, loc='upper right', columnspacing=1.0)
+    legend = ax.legend(handles_with_title, labels_with_title, ncol=num_cols, loc='upper right', columnspacing=1.0, handlelength=5.0)
     for vpack in legend._legend_handle_box.get_children():
         for hpack in vpack.get_children()[:1]:
             hpack.get_children()[0].set_width(0)
