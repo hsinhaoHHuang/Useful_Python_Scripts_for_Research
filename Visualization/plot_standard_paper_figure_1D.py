@@ -63,6 +63,18 @@ axis_x_max    = 1.0e+2      # max for x axis
 axis_x_label  = r'$\mathit{r}\ ({\rm kpc})}$'
 axis_y_label  = r'$\mathit{\rho}\ ({\rm M}_{\odot}{\rm kpc}^{\rm -3})$'
 
+annotated_arrow_1_x = 1.0
+annotated_arrow_1_y = 1.0
+annotated_text_1_x  = 1.0
+annotated_text_1_y  = 1.0
+annotated_text_1    = '1'
+
+annotated_arrow_2_x = 2.0
+annotated_arrow_2_y = 2.0
+annotated_text_2_x  = 2.0
+annotated_text_2_y  = 2.0
+annotated_text_2    = '2'
+
 cm            = 1/2.54      # centimeters in inches
 fig_size_x    = 16*cm       # output figure size
 fig_size_y    = (fig_size_x-1*cm)/n_cols*n_rows
@@ -122,8 +134,11 @@ def main() -> None:
         ax.plot( Sampling_x,     Analytical_Ref(Sampling_x), linestyle='--', color=color_3,  linewidth=LINE_WIDTH, label='Analytical Reference' )
 
         # annotate the arrow and text
-        ax.annotate('', xy=(annotated_arrow_x, annotated_arrow_y ), xytext=(annotated_text_x, annotated_text_y), va='bottom', ha='center', arrowprops=dict(arrowstyle='->', color=prof_color_FDM_16,    linewidth=LINE_WIDTH) )
-        ax.text(annotated_text_x, annotated_text_y, annotated_text, va='center', ha='left', color=_color_ref)
+        ax.annotate( '', xy=(annotated_arrow_1_x, annotated_arrow_1_y ), xytext=(annotated_text_1_x, annotated_text_1_y), va='bottom', ha='center', arrowprops=dict(arrowstyle='->', color=color_1, linewidth=LINE_WIDTH ) )
+        ax.text(annotated_text_1_x, annotated_text_1_y, annotated_text_1, va='center', ha='left', color=_color_ref)
+
+        ax.annotate( '', xy=(annotated_arrow_2_x, annotated_arrow_2_y ), xytext=(annotated_text_2_x, annotated_text_2_y), va='bottom', ha='center', arrowprops=dict(arrowstyle='->', color=color_2, linewidth=LINE_WIDTH ) )
+        ax.text(annotated_text_2_x, annotated_text_2_y, annotated_text_2, va='center', ha='left', color=_color_ref)
 
         # x,y scale
         ax.set_xscale( 'log' )
