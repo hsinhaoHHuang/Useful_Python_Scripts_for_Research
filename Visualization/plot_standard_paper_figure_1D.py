@@ -86,7 +86,7 @@ fig           = plt.figure( 1, (fig_size_x, fig_size_y), dpi=dpi )
 # Read the data and parameters
 ####################################################
 # path
-Table_1_path     = np.empty( n_rows*n_cols, dtype=object )
+Table_1_Path     = np.empty( n_rows*n_cols, dtype=object )
 Table_1_Path[0]  = './Table_1_000000'
 Table_1_Path[1]  = './Table_1_000001'
 Table_1_Path[2]  = './Table_1_000002'
@@ -94,7 +94,7 @@ Table_1_Path[3]  = './Table_1_000003'
 Table_1_Path[4]  = './Table_1_000004'
 Table_1_Path[5]  = './Table_1_000005'
 
-Table_2_path     = np.empty( n_rows*n_cols, dtype=object )
+Table_2_Path     = np.empty( n_rows*n_cols, dtype=object )
 Table_2_Path[0]  = './Table_2_000000'
 Table_2_Path[1]  = './Table_2_000001'
 Table_2_Path[2]  = './Table_2_000002'
@@ -122,23 +122,23 @@ def main() -> None:
         Table_1_Data_x, Table_1_Data_y = np.loadtxt( Table_1_Path[panel_idx], unpack=True )
         Table_2_Data_x, Table_2_Data_y = np.loadtxt( Table_2_Path[panel_idx], unpack=True )
 
-        ax  = fig.add_subplot( (n_rows, n_clos, panel_idx+1) )
+        ax  = fig.add_subplot( n_rows, n_cols, panel_idx+1 )
 
         # plot data
-        ax.plot( Table_1_Data_x, Table_1_Data_y,             linestyle='.-', color=color_1,  linewidth=LINE_WIDTH, label='1' )
-        ax.plot( Table_2_Data_x, Table_2_Data_y,             linestyle='.-', color=color_2,  linewidth=LINE_WIDTH, label='2' )
+        ax.plot( Table_1_Data_x, Table_1_Data_y,             linestyle='-',  color=color_1,    linewidth=LINE_WIDTH, label='1' )
+        ax.plot( Table_2_Data_x, Table_2_Data_y,             linestyle='-',  color=color_2,    linewidth=LINE_WIDTH, label='2' )
 
         # plot analytical reference
         Sampling_x = np.linspace( 0.3*np.min(Table_1_Data_x), 3.0*np.max(Table_1_Data_x), 256 )
 
-        ax.plot( Sampling_x,     Analytical_Ref(Sampling_x), linestyle='--', color=color_3,  linewidth=LINE_WIDTH, label='Analytical Reference' )
+        ax.plot( Sampling_x,     Analytical_Ref(Sampling_x), linestyle='--', color=color_ref,  linewidth=LINE_WIDTH, label='Analytical Reference' )
 
         # annotate the arrow and text
-        ax.annotate( '', xy=(annotated_arrow_1_x, annotated_arrow_1_y ), xytext=(annotated_text_1_x, annotated_text_1_y), va='bottom', ha='center', arrowprops=dict(arrowstyle='->', color=color_1, linewidth=LINE_WIDTH ) )
-        ax.text(annotated_text_1_x, annotated_text_1_y, annotated_text_1, va='center', ha='left', color=_color_ref)
+        #ax.annotate( '', xy=(annotated_arrow_1_x, annotated_arrow_1_y ), xytext=(annotated_text_1_x, annotated_text_1_y), va='bottom', ha='center', arrowprops=dict(arrowstyle='->', color=color_1, linewidth=LINE_WIDTH ) )
+        #ax.text(annotated_text_1_x, annotated_text_1_y, annotated_text_1, va='center', ha='left', color=color_ref)
 
-        ax.annotate( '', xy=(annotated_arrow_2_x, annotated_arrow_2_y ), xytext=(annotated_text_2_x, annotated_text_2_y), va='bottom', ha='center', arrowprops=dict(arrowstyle='->', color=color_2, linewidth=LINE_WIDTH ) )
-        ax.text(annotated_text_2_x, annotated_text_2_y, annotated_text_2, va='center', ha='left', color=_color_ref)
+        #ax.annotate( '', xy=(annotated_arrow_2_x, annotated_arrow_2_y ), xytext=(annotated_text_2_x, annotated_text_2_y), va='bottom', ha='center', arrowprops=dict(arrowstyle='->', color=color_2, linewidth=LINE_WIDTH ) )
+        #ax.text(annotated_text_2_x, annotated_text_2_y, annotated_text_2, va='center', ha='left', color=color_ref)
 
         # x,y scale
         ax.set_xscale( 'log' )
@@ -149,8 +149,8 @@ def main() -> None:
         ax.set_ylabel( axis_y_label )
 
         # x,y limit
-        ax.set_xlim( axis_x_min, axis_x_max )
-        ax.set_ylim( axis_y_min, axis_y_max )
+        #ax.set_xlim( axis_x_min, axis_x_max )
+        #ax.set_ylim( axis_y_min, axis_y_max )
 
         # legend
         ax.legend( loc='upper right' )
