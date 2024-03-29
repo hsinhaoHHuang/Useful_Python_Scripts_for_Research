@@ -18,20 +18,24 @@ import numpy as np
 
 # =============================================================================================================
 # Step 01. Set parameters in Input__TestProb
-Plummer_Rho0     =  1.0                 # peak density
-Plummer_R0       =  0.1                 # scale radius
-Plummer_Center   = [1.50, 1.50, 1.50]   # central coordinates
-Plummer_BulkVel  = [0.00, 0.00, 0.00]   # bulk velocity
-Plummer_GasMFrac =  0.25                # gas mass fraction
+Wave   = 1
+Hybrid = 2
+Scheme = Wave
+
+Gau_v0        = 0.0     #  mean velocity
+Gau_Width     = 0.1     #  Gaussian width
+Gau_Center    = 0.25    #  Gaussian center
+Gau_XYZ       = 0       #  wave propagation direction (0/1/2 --> x/y/z)
+Gau_PeriodicN = 10      #  periodic boundary condition
+                        #            // (0 = non-periodic, >0 = number of periodic images each side)
+ELBDM_ETA     = 6.0
 
 # =======================================================================================
 
 # =============================================================================================================
 # Step 02. Set parameters in Input__Parameter
-GAMMA            = 1.666666667 # ratio of specific heats (i.e., adiabatic index)
-NEWTON_G         = 1.0         # gravitational constant
 
-UM_IC_BoxSize_x  = 3.0         # box size of the UM_IC in the x direction
+UM_IC_BoxSize_x  = 1.0         # box size of the UM_IC in the x direction
 UM_IC_N_x_base   = 64          # number of base-level cells in the UM_IC in the x direction
 UM_IC_N_y_base   = 64          # ...                                            y direction
 UM_IC_N_z_base   = 64          # ...                                            z direction
@@ -176,53 +180,38 @@ print("")
 
 # =======================================================================================
 # Step 06. Define the functions for data construction
-# Eint from Dens and Pres
-def EoS_DensPres2Eint_Gamma( Dens, Pres ):
-
-    Eint = Pres * 1.0 / ( GAMMA - 1.0 )
-
-    return Eint
-
-# Etot from Con and Eint
-def Hydro_ConEint2Etot( Dens, MomX, MomY, MomZ, Eint, Emag ):
-
-    Etot  = 0.5*( (MomX)**2 + (MomY)**2 + (MomZ)**2 ) / Dens
-    Etot += Eint
-    Etot += Emag
-
-    return Etot
-
 # Set the fluid data
 def SetGridIC( x, y, z, Time ):
 
-    # gas share the same density profile as particles (except for different total masses)
-    TotM       = 4.0/3.0*np.pi*(Plummer_R0**3)*Plummer_Rho0
-    GasRho0    = Plummer_Rho0*Plummer_GasMFrac
-    PresBg     = 0.0                                       # background pressure (set to 0.0 by default)
+    if Gau_XYZ == 0:
+       r = x
+       BoxSize = UM_IC_BoxSize_x
+    if Gau_XYZ == 1:
+       r = y
+       BoxSize = UM_IC_BoxSize_y
+    if Gau_XYZ == 2:
+       r = z
+       BoxSize = UM_IC_BoxSize_z
 
-    r2         = (x-Plummer_Center[0])**2 + (y-Plummer_Center[1])**2 + (z-Plummer_Center[2])**2
-    a2         = r2 / (Plummer_R0)**2
-    Dens1Cloud = GasRho0 * ( 1.0 + a2 )**(-2.5)
+    Gau_Const1 = 1.0 + (  Time / ( ELBDM_ETA*(Gau_Width)**2 ) )**2
+    Gau_Theta1 = -0.5*np.arccos( ( Gau_Const1 )**(-0.5)  )
+    Real = 0.0
+    Imag = 0.0
 
-    # set fluid variables
-    Dens = Dens1Cloud
-    MomX = Dens1Cloud*Plummer_BulkVel[0]
-    MomY = Dens1Cloud*Plummer_BulkVel[1]
-    MomZ = Dens1Cloud*Plummer_BulkVel[2]
-    Pres = NEWTON_G*TotM*GasRho0 / ( 6.0*Plummer_R0*(1.0 + a2)**3 ) + PresBg
+##  n=0, m=0: original wave packet
+##  n>0, m=0/1: images for periodic BC on the plus(+)/minus(-) direction
+    for n in range(0, Gau_PeriodicN+1, 1):
+        for m in range(0, [2,1][n==0], 1):
+            Center     = Gau_Center + n*(1-2*m)*BoxSize
+            dr1        = r -     Gau_v0*Time - Center
+            dr2        = r - 0.5*Gau_v0*Time - Center
+            Gau_Const2 = ( (Gau_Width**2)*np.pi*Gau_Const1 )**(-0.25)*np.exp( -0.5*( dr1/Gau_Width )**2/Gau_Const1 )
+            Gau_Theta2 = 0.5*( dr1**2 )*ELBDM_ETA*Time/( ( ELBDM_ETA*(Gau_Width**2) )**2 + (Time)**2  ) + Gau_v0*ELBDM_ETA*dr2
 
-    # compute the total gas energy
-    Eint = EoS_DensPres2Eint_Gamma( Dens, Pres )                    # assuming EoS requires no passive scalars
-    Etot = Hydro_ConEint2Etot( Dens, MomX, MomY, MomZ, Eint, 0.0 )  # do NOT include magnetic energy here
+            Real += Gau_Const2*np.cos( Gau_Theta1 + Gau_Theta2 )
+            Imag += Gau_Const2*np.sin( Gau_Theta1 + Gau_Theta2 )
 
-    # set the output
-    DENS = Dens
-    MOMX = MomX
-    MOMY = MomY
-    MOMZ = MomZ
-    ENGY = Etot
-
-    return DENS, MOMX, MOMY, MOMZ, ENGY
+    return Real, Imag
 
 # =============================================================================================================
 
@@ -242,12 +231,9 @@ for lv in range(0, MAX_LEVEL+1, 1):
     z0 = UM_IC_z0[lv]
     dh = UM_IC_dh[lv]
 
-    UM_IC_thisLv = np.zeros( (5, Nz, Ny, Nx), dtype=UM_IC_dtype )
-    Array_Dens   = np.zeros(    (Nz, Ny, Nx), dtype=UM_IC_dtype )
-    Array_Momx   = np.zeros(    (Nz, Ny, Nx), dtype=UM_IC_dtype )
-    Array_Momy   = np.zeros(    (Nz, Ny, Nx), dtype=UM_IC_dtype )
-    Array_Momz   = np.zeros(    (Nz, Ny, Nx), dtype=UM_IC_dtype )
-    Array_Engy   = np.zeros(    (Nz, Ny, Nx), dtype=UM_IC_dtype )
+    UM_IC_thisLv = np.zeros( (2, Nz, Ny, Nx), dtype=UM_IC_dtype )
+    Array_Real   = np.zeros(    (Nz, Ny, Nx), dtype=UM_IC_dtype )
+    Array_Imag   = np.zeros(    (Nz, Ny, Nx), dtype=UM_IC_dtype )
 
     for i in range(0, Nx, 1):
         for j in range(0, Ny, 1):
@@ -257,28 +243,39 @@ for lv in range(0, MAX_LEVEL+1, 1):
                 y = y0 + (j+0.5)*dh
                 z = z0 + (k+0.5)*dh
 
-                Dens, Momx, Momy, Momz, Engy = SetGridIC( x, y, z, 0.0 )
+                Real, Imag  = SetGridIC( x, y, z, 0.0 )
+                Array_Real[k, j, i] = Real
+                Array_Imag[k, j, i] = Imag
 
-                Array_Dens[k, j, i] = Dens
-                Array_Momx[k, j, i] = Momx
-                Array_Momy[k, j, i] = Momy
-                Array_Momz[k, j, i] = Momz
-                Array_Engy[k, j, i] = Engy
+    # Phase and Density
+    Array_Phas = np.arctan2( Array_Imag, Array_Real )
+    Array_Dens = Array_Real**2 + Array_Imag**2
 
-    UM_IC_thisLv[0, :, :, :] = Array_Dens
-    UM_IC_thisLv[1, :, :, :] = Array_Momx
-    UM_IC_thisLv[2, :, :, :] = Array_Momy
-    UM_IC_thisLv[3, :, :, :] = Array_Momz
-    UM_IC_thisLv[4, :, :, :] = Array_Engy
+    # Unwrap phase
+    Array_Phas = np.unwrap( Array_Phas, axis=0 )
+    Array_Phas = np.unwrap( Array_Phas, axis=1 )
+    Array_Phas = np.unwrap( Array_Phas, axis=2 )
+
+    if Scheme == Hybrid:
+        UM_IC_thisLv[0, :, :, :] = Array_Dens
+        UM_IC_thisLv[1, :, :, :] = Array_Phas
+
+    elif Scheme == Wave:
+        UM_IC_thisLv[0, :, :, :] = Array_Real
+        UM_IC_thisLv[1, :, :, :] = Array_Imag
 
     # =============================================================================================================
 
     # =============================================================================================================
     # Step 08. Write the output UM_IC to the file
-    output_file    = "UM_IC"
+    if Scheme == Hybrid:
+        output_file = "UM_IC_hybrid"
+    elif Scheme == Wave:
+        output_file = "UM_IC_wave"
+
     output_file_Lv = output_file+"_Lv%02d"%lv
 
-    print("    Writing UM_IC to output file...")
+    print("        Writing UM_IC to output file...")
     with open(output_file_Lv, "wb") as f:
         UM_IC_thisLv.tofile(f)
         f.close()
