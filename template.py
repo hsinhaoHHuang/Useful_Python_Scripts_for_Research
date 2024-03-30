@@ -2,6 +2,16 @@
 
 
 def main() -> None:
+    """
+    This function is a template.
+
+    Parameters:
+        None
+
+    Return:
+        None
+    """
+
     print('Hello World!')
 
 if __name__ == '__main__':
