@@ -55,10 +55,10 @@ color_1       = 'C3'        # color for Table_1
 color_2       = 'C0'        # color for Table_2
 color_ref     = 'C2'        # color for Reference
 
-axis_y_min    = 1.0e+2      # min for y axis
-axis_y_max    = 1.0e+8      # max for y axis
-axis_x_min    = 1.0e-1      # min for x axis
-axis_x_max    = 1.0e+2      # max for x axis
+axis_y_min    = 8.0e+2      # min for y axis
+axis_y_max    = 2.0e+6      # max for y axis
+axis_x_min    = 5.0e-5      # min for x axis
+axis_x_max    = 2.0e-2      # max for x axis
 
 axis_x_label  = r'$\mathit{r}\ ({\rm kpc})}$'
 axis_y_label  = r'$\mathit{\rho}\ ({\rm M}_{\odot}{\rm kpc}^{\rm -3})$'
@@ -107,7 +107,7 @@ Table_2_Path[5]  = './Table_2_000005'
 #  Define Functions
 def Analytical_Ref(x):
 
-    y_analytical = np.sin(x)
+    y_analytical = 1e1*x**(-1)
 
     return y_analytical
 
@@ -131,7 +131,7 @@ def main() -> None:
         # plot analytical reference
         Sampling_x = np.linspace( 0.3*np.min(Table_1_Data_x), 3.0*np.max(Table_1_Data_x), 256 )
 
-        ax.plot( Sampling_x,     Analytical_Ref(Sampling_x), linestyle='--', color=color_ref,  linewidth=LINE_WIDTH, label='Analytical Reference' )
+        ax.plot( Sampling_x,     Analytical_Ref(Sampling_x), linestyle='--', color=color_ref,  linewidth=LINE_WIDTH, label='Analytical' )
 
         # annotate the arrow and text
         #ax.annotate( '', xy=(annotated_arrow_1_x, annotated_arrow_1_y ), xytext=(annotated_text_1_x, annotated_text_1_y), va='bottom', ha='center', arrowprops=dict(arrowstyle='->', color=color_1, linewidth=LINE_WIDTH ) )
@@ -145,26 +145,41 @@ def main() -> None:
         ax.set_yscale( 'log' )
 
         # x,y labels
-        ax.set_xlabel( axis_x_label )
-        ax.set_ylabel( axis_y_label )
+        if ( panel_idx//n_cols >= n_rows-1 ):
+            ax.set_xlabel( axis_x_label )
+
+        if ( panel_idx%n_cols == 0 ):
+            ax.set_ylabel( axis_y_label )
 
         # x,y limit
-        #ax.set_xlim( axis_x_min, axis_x_max )
-        #ax.set_ylim( axis_y_min, axis_y_max )
+        ax.set_xlim( axis_x_min, axis_x_max )
+        ax.set_ylim( axis_y_min, axis_y_max )
 
         # legend
-        ax.legend( loc='upper right' )
+        if ( panel_idx == n_cols-1 ):
+            ax.legend( loc='upper right' )
 
         # ticks and tick labels
+
+        if ( panel_idx%n_cols == 0 ):
+            ax.tick_params(axis='y', which='both', labelleft=True, labelright=False)
+        else:
+            ax.tick_params(axis='y', which='both', labelleft=False, labelright=False)
+
+        if ( panel_idx//n_cols >= n_rows-1 ):
+            ax.tick_params(axis='x', which='both', labelbottom=True, labeltop=False)
+        else:
+            ax.tick_params(axis='x', which='both', labelbottom=False, labeltop=False)
+
         ax.xaxis.get_ticklocs(minor=True)
         ax.yaxis.get_ticklocs(minor=True)
         ax.minorticks_on()
         ax.xaxis.set_ticks_position('both')
         ax.yaxis.set_ticks_position('both')
-        ax.tick_params(which='both',direction='in')
+        ax.tick_params(which='both', direction='in')
 
     # Output the figure to files
-    plt.tight_layout()
+    plt.tight_layout(pad=0.2)
     fig.set_dpi(dpi)
     fig.set_size_inches(fig_size_x, fig_size_y)
 
