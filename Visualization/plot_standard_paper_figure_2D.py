@@ -69,8 +69,8 @@ annotated_scale    = 1                 # length scale to be annotated in the fig
 annotated_radius   = 10.0              # radius of sphere to be annotated in the figure (in plotting unit)
 
 colormap           = 'viridis'         # ['viridis', 'plasma', 'inferno', 'magma', 'cividis']
-color_lim_min      = 1.e2              # color bar upper limit for projection (in plotting unit)
-color_lim_max      = 1.e8              # color bar lower limit for projection (in plotting unit)
+color_lim_min      = 1.e2              # color bar lower limit for projection (in plotting unit)
+color_lim_max      = 1.e8              # color bar upper limit for projection (in plotting unit)
 
 buff_size          = 1024              # buffer size for the projection figure
 
@@ -128,7 +128,7 @@ def main() -> None:
         Data_Center_z         = ds.domain_center[2].in_units('code_length').d
         Data_Center           = ds.arr( [Data_Center_x, Data_Center_y, Data_Center_z], 'code_length' )
         Data_Width            = ds.domain_width[0]/zoom
-        Data_slab_thickness   = ds.quan( slab_thickness , Plotting_UNIT_L ) if slab_thickness > 0.0 else Data_Width
+        Data_slab_thickness   = ds.quan( slab_thickness, Plotting_UNIT_L ) if slab_thickness > 0.0 else Data_Width
         Data_loc              = Data_Center
         Data_corner_L         = Data_loc - ds.arr( [0.5*Data_Width, 0.5*Data_Width, 0.5*Data_slab_thickness] )
         Data_corner_R         = Data_loc + ds.arr( [0.5*Data_Width, 0.5*Data_Width, 0.5*Data_slab_thickness] )
