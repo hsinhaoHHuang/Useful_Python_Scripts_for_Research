@@ -95,12 +95,12 @@ fig                = plt.figure( 1,(fig_size_x, fig_size_y), dpi=dpi )
 ###################################################################################################
 # path
 Data_path    = np.empty( n_rows*n_cols, dtype=object )
-Data_path[0] = '/work1/yglee/Software/gamer_new/bin/default/Data_000010'
-Data_path[1] = '/work1/yglee/Software/gamer_new/bin/default/Data_000020'
-Data_path[2] = '/work1/yglee/Software/gamer_new/bin/default/Data_000030'
-Data_path[3] = '/work1/yglee/Software/gamer_new/bin/default/Data_000040'
-Data_path[4] = '/work1/yglee/Software/gamer_new/bin/default/Data_000045'
-Data_path[5] = '/work1/yglee/Software/gamer_new/bin/default/Data_000050'
+Data_path[0] = './Data_000010'
+Data_path[1] = './Data_000020'
+Data_path[2] = './Data_000030'
+Data_path[3] = './Data_000040'
+Data_path[4] = './Data_000045'
+Data_path[5] = './Data_000050'
 ###################################################################################################
 
 
