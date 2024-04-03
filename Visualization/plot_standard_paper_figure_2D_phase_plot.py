@@ -164,6 +164,10 @@ def main() -> None:
         phas.annotate_text( xpos=1.2*x_lim_min, ypos=0.80*y_lim_max, text='Data %d'%(panel_idx),
                             size=1.25*FONT_SIZE, color="white", weight="normal", bbox=dict(boxstyle="round",ec='white',fc='white',alpha=0.0) } )
 
+        # Annotate the time
+        phas.annotate_text( xpos=0.80*x_lim_max, ypos=0.80*y_lim_max,
+                            text='$t$ = {:.1f} {: 5s}'.format( ds.current_time.in_units(Plotting_UNIT_T), Plotting_UNIT_T ),
+                            size=FONT_SIZE, color="white" )
 
 
 
