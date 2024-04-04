@@ -31,7 +31,7 @@ def main() -> None:
     ax.scatter( X, Y, 40, 'C1',  lw=0, alpha=0.1 )
 
     # annotate the information
-    ax.text( mean+sigma, mean-sigma, "mean = %4.3f\nsigma = %4.3f"%(mean, sigma) )
+    text = ax.text( mean+0.5*sigma, mean-0.5*sigma, 'mean = %4.3f\nsigma = %4.3f'%(mean, sigma), color='C0' )
 
     # set lables
     ax.set_xlabel( r'$x$' )
