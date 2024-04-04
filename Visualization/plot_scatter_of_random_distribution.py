@@ -21,11 +21,14 @@ def main() -> None:
     mean       = 50.0
     sigma      = 10.0
     num_points = 10000
+
     X = np.random.normal( mean, sigma, num_points )
     Y = np.random.normal( mean, sigma, num_points )
 
     # plot the scatter
-    ax.scatter( X, Y, 40, 'C1', lw=0, alpha=0.1 )
+    ax.scatter( X, Y, 50, '0.0', lw=2            )
+    ax.scatter( X, Y, 50, '1.0', lw=0            )
+    ax.scatter( X, Y, 40, 'C1',  lw=0, alpha=0.1 )
 
     # annotate the information
     ax.text( mean+sigma, mean-sigma, "mean = %4.3f\nsigma = %4.3f"%(mean, sigma) )
