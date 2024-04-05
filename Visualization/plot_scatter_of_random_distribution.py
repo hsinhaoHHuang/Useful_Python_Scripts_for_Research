@@ -5,14 +5,16 @@ import numpy as np
 
 
 def main() -> None:
-    """
-    This function plots random points following the 2D normal distribution.
+    """This function plots random points following the 2D normal distribution.
 
-    Parameters:
-        None
+    Parameters
+    ----------
+    None
 
-    Return:
-        None
+    Returns
+    -------
+    None
+
     """
     # create the figure
     fig = plt.figure()
