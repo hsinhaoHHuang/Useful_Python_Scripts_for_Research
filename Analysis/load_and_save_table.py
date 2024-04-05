@@ -3,15 +3,20 @@
 import numpy as np
 
 def load_from_table( Filename_table: str ) -> tuple[float, float]:
-    """
-    This funcion load a two-column text file and return the two colums as two arrays.
+    """This funcion load a two-column text file and return the two colums as two arrays.
 
-    Parameters:
-        Filename_table  : the filename of the input text file
+    Parameters
+    ----------
+    Filename_table : str
+        The filename of the input text file
 
-    Return:
-        Table_x         : the array for the fisrt column
-        Table_y         : the array for the second colum
+    Returns
+    -------
+    Table_x : float
+        The array for the fisrt column
+    Table_y : float
+        The array for the second colum
+
     """
 
     # load the table
@@ -21,16 +26,21 @@ def load_from_table( Filename_table: str ) -> tuple[float, float]:
 
 
 def save_table_to_file( Filename_output: str, Table_x: float, Table_y: float ) -> None:
-    """
-    This function save two arrays and save them into two columns in a text file.
+    """This function save two arrays and save them into two columns in a text file.
 
     Parameters:
-        Filename_output : the filename of the output text file
-        Table_x         : the array for the fisrt column
-        Table_y         : the array for the second colum
+    ----------
+    Filename_output : str
+        The filename of the output text file
+    Table_x         : float
+        The array for the fisrt column
+    Table_y         : float
+        Yhe array for the second colum
 
-    Return:
-        None
+    Returns
+    -------
+    None
+
     """
 
     # save the table to text file
@@ -42,14 +52,16 @@ def save_table_to_file( Filename_output: str, Table_x: float, Table_y: float ) -
     return
 
 def main() -> None:
-    """
-    This function is a example to read two columns from the text file and save them into another text file.
+    """This function is a example to read two columns from the text file and save them into another text file.
 
-    Parameters:
-        None
+    Parameters
+    ----------
+    None
 
-    Return:
-        None
+    Returns
+    -------
+    None
+
     """
 
     # readi a density profile
