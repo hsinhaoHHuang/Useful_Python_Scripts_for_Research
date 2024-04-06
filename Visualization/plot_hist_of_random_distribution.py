@@ -24,18 +24,14 @@ def main() -> None:
     Data = np.random.poisson( lambda_poisson, num_points )
 
     # plot the histogram
-    ax.hist( Data, bins=range(15), alpha=0.7, color='blue', align='left' )
+    ax.hist( Data, bins=range(3*lambda_poisson), alpha=0.7, color='blue', align='left' )
 
     # annotate the information
-    #text = ax.text( mean+0.5*sigma, mean-0.5*sigma, 'mean = %4.3f\nsigma = %4.3f'%(mean, sigma), color='C0' )
+    text = ax.text( 2*lambda_poisson, 1700, 'N = %d\nlambda = %4.1f'%(num_points, lambda_poisson), color='k' )
 
     # set lables
     ax.set_xlabel( 'Number of events' )
     ax.set_ylabel( 'Frequency' )
-
-    # x,y limit
-    #ax.set_xlim( mean-3*sigma, mean+3*sigma )
-    #ax.set_ylim( mean-3*sigma, mean+3*sigma )
 
     # save the figure
     plt.tight_layout()
