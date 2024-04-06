@@ -30,8 +30,8 @@ def main() -> None:
     #text = ax.text( mean+0.5*sigma, mean-0.5*sigma, 'mean = %4.3f\nsigma = %4.3f'%(mean, sigma), color='C0' )
 
     # set lables
-    ax.set_xlabel( r'$Number of events$' )
-    ax.set_ylabel( r'$Frequency$' )
+    ax.set_xlabel( 'Number of events' )
+    ax.set_ylabel( 'Frequency' )
 
     # x,y limit
     #ax.set_xlim( mean-3*sigma, mean+3*sigma )
