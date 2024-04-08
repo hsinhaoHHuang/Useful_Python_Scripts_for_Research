@@ -182,14 +182,14 @@ def main() -> None:
         phas.render()
 
         # Set the ticks
-        minor_ticks = LogLocator(base = 10.0, subs = np.arange(1.0, 10.0) * 0.1, numticks = 10)
+        minor_ticks = LogLocator( base=10.0, subs=np.arange(1.0, 10.0)*0.1, numticks=10 )
         grid[panel_idx].axes.xaxis.get_ticklocs( minor=True )
         grid[panel_idx].axes.yaxis.get_ticklocs( minor=True )
         grid[panel_idx].axes.minorticks_on()
-        grid[panel_idx].axes.xaxis.set_minor_locator(minor_ticks)
-        grid[panel_idx].axes.xaxis.set_minor_formatter(NullFormatter())
-        grid[panel_idx].axes.yaxis.set_minor_locator(minor_ticks)
-        grid[panel_idx].axes.yaxis.set_minor_formatter(NullFormatter())
+        grid[panel_idx].axes.xaxis.set_minor_locator( minor_ticks )
+        grid[panel_idx].axes.xaxis.set_minor_formatter( NullFormatter() )
+        grid[panel_idx].axes.yaxis.set_minor_locator( minor_ticks )
+        grid[panel_idx].axes.yaxis.set_minor_formatter( NullFormatter() )
         grid[panel_idx].axes.tick_params( which='both', left=True, right=True, bottom=True, top=True )
         grid[panel_idx].tick_params( which='both', direction='in' )
 

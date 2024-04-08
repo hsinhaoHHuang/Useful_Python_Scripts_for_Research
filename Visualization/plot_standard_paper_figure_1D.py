@@ -2,6 +2,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.ticker import LogLocator, NullFormatter
 
 
 
@@ -171,12 +172,17 @@ def main() -> None:
         else:
             ax.tick_params(axis='x', which='both', labelbottom=False, labeltop=False)
 
-        ax.xaxis.get_ticklocs(minor=True)
-        ax.yaxis.get_ticklocs(minor=True)
+        minor_ticks = LogLocator( base=10.0, subs=np.arange(1.0, 10.0)*0.1, numticks=10 )
+        ax.xaxis.get_ticklocs( minor=True )
+        ax.yaxis.get_ticklocs( minor=True )
         ax.minorticks_on()
-        ax.xaxis.set_ticks_position('both')
-        ax.yaxis.set_ticks_position('both')
-        ax.tick_params(which='both', direction='in')
+        ax.xaxis.set_minor_locator( minor_ticks )
+        ax.xaxis.set_minor_formatter( NullFormatter() )
+        ax.yaxis.set_minor_locator( minor_ticks )
+        ax.yaxis.set_minor_formatter( NullFormatter() )
+        ax.xaxis.set_ticks_position( 'both' )
+        ax.yaxis.set_ticks_position( 'both' )
+        ax.tick_params( which='both', direction='in' )
 
     # Output the figure to files
     plt.tight_layout(pad=0.2)
