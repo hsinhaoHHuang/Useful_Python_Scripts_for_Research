@@ -101,25 +101,25 @@ def main() -> None:
     comm = MPI.COMM_WORLD
     size = comm.Get_size()
     rank = comm.Get_rank()
+    previous_rank = (rank+size-1)%size
+    next_rank     = (rank+1)%size
     print( f'My rank is Rank-{rank:02d}' )
 
     numData_sending = 10
-    comm.send(numData_sending, dest=(rank+1)%size)
+    comm.send( numData_sending, dest=next_rank )
 
-    data_sending = rank*np.linspace(0.0,3.14,numData_sending)
-    comm.Send(data_sending, dest=(rank+1)%size)
+    data_sending = rank*np.linspace( 0.0, 3.14, numData_sending )
+    comm.Send( data_sending, dest=(rank+1)%size )
+    print( f'Rank-{rank:02d} data sent: ', data_sending )
 
+    numData_recving = comm.recv( source=previous_rank )
+    print( 'Number of data to receive: ', numData_recving )
 
-numData_recving = comm.recv(source=(rank+size-1)%size)
-print('Number of data to receive: ',numData_recving)
+    data_recving = np.empty( numData_recving, dtype='d' )  # allocate space to receive the array
+    comm.Recv( data_recving, source=previous_rank )
 
-data_recving = np.empty(numData_recving, dtype='d')  # allocate space to receive the array
-comm.Recv(data_recving, source=(rank+size-1)%size)
+    print( f'Rank-{rank:02d} data received: ', data_recving )
 
-print('data received: ',data_recving)
-
-
-    print('Hello World!')
 
 if __name__ == '__main__':
     main()
