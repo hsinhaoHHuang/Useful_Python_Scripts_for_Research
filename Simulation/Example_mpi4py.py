@@ -13,24 +13,6 @@ import numpy as np
 ################################################################################################################
 # Bcast
 ################################################################################################################
-if rank == 0:
-    # create a data array on process 0
-    # in real code, this section might
-    # read in data parameters from a file
-    numData_bcasting = 10
-    data_bcasting = np.linspace(0.0,3.14,numData_bcasting)
-else:
-    numData_bcasting = None
-
-# broadcast numData and allocate array on other ranks:
-numData_bcasting = comm.bcast(numData_bcasting, root=0)
-if rank != 0:
-    data_bcasting = np.empty(numData_bcasting, dtype='d')
-
-comm.Bcast(data_bcasting, root=0) # broadcast the array from rank 0 to all others
-
-print('Rank: ',rank, ', data received: ',data_bcasting)
-
 ################################################################################################################
 # Scattering
 ################################################################################################################
@@ -119,6 +101,26 @@ def main() -> None:
     comm.Recv( data_recving, source=previous_rank )
 
     print( f'Rank-{rank:02d} data received: ', data_recving )
+
+    # Bcast
+    if rank == 0:
+        # create a data array on process 0
+        # in real code, this section might
+        # read in data parameters from a file
+        numData_bcasting = 10
+        data_bcasting    = np.linspace( 0.0, 3.14, numData_bcasting )
+    else:
+        numData_bcasting = None
+
+    # broadcast numData and allocate array on other ranks:
+    numData_bcasting = comm.bcast( numData_bcasting, root=0 )
+    if rank != 0:
+        data_bcasting = np.empty( numData_bcasting, dtype='d' )
+
+    comm.Bcast( data_bcasting, root=0 ) # broadcast the array from rank 0 to all others
+
+    print( f'Rank-{rank:02d} data bcasted: ', data_bcasting )
+
 
 
 if __name__ == '__main__':
