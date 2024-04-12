@@ -11,23 +11,6 @@ import numpy as np
 # read in data parameters from a file
 '''
 ################################################################################################################
-# Bcast
-################################################################################################################
-################################################################################################################
-# Scattering
-################################################################################################################
-numDataPerRank_scattering = 10
-data_scattering = None
-if rank == 0:
-    data_scattering = np.linspace(1,size*numDataPerRank_scattering,numDataPerRank_scattering*size)
-    # when size=4 (using -n 4), data = [1.0:40.0]
-
-recvbuf = np.empty(numDataPerRank_scattering, dtype='d') # allocate space for recvbuf
-comm.Scatter(data_scattering, recvbuf, root=0)
-
-print('Rank: ',rank, ', recvbuf received: ',recvbuf)
-
-################################################################################################################
 # Gathering
 ################################################################################################################
 numDataPerRank_gathering = 10
@@ -120,6 +103,20 @@ def main() -> None:
     comm.Bcast( data_bcasting, root=0 ) # broadcast the array from rank 0 to all others
 
     print( f'Rank-{rank:02d} data bcasted: ', data_bcasting )
+
+    # Scattering
+    numDataPerRank_scattering = 10
+    data_scattering = None
+
+    if rank == 0:
+        data_scattering = np.linspace( 1, size*numDataPerRank_scattering, size*numDataPerRank_scattering )
+        # when size=4 (using -n 4), data = [1.0:40.0]
+
+    recvbuf = np.empty( numDataPerRank_scattering, dtype='d' ) # allocate space for recvbuf
+    comm.Scatter( data_scattering, recvbuf, root=0 )
+
+    print( f'Rank-{rank:02d} data scattered: ', recvbuf )
+
 
 
 
