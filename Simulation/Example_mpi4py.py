@@ -4,27 +4,7 @@ from mpi4py import MPI
 import numpy as np
 
 
-################################################################################################################
-# Send and Recv
-################################################################################################################
-# in real code, this section might
-# read in data parameters from a file
 '''
-################################################################################################################
-# Gathering
-################################################################################################################
-numDataPerRank_gathering = 10
-sendbuf = np.linspace(rank*numDataPerRank_gathering+1,(rank+1)*numDataPerRank_gathering,numDataPerRank_gathering)
-print('Rank: ',rank, ', sendbuf: ',sendbuf)
-
-recvbuf = None
-if rank == 0:
-    recvbuf = np.empty(numDataPerRank_gathering*size, dtype='d')
-
-comm.Gather(sendbuf, recvbuf, root=0)
-
-if rank == 0:
-    print('Rank: ',rank, ', recvbuf received: ',recvbuf)
 
 ################################################################################################################
 # Reduce
@@ -116,6 +96,20 @@ def main() -> None:
     comm.Scatter( data_scattering, recvbuf, root=0 )
 
     print( f'Rank-{rank:02d} data scattered: ', recvbuf )
+
+    # Gathering
+    numDataPerRank_gathering = 10
+    sendbuf = np.linspace( rank*numDataPerRank_gathering+1, (rank+1)*numDataPerRank_gathering, numDataPerRank_gathering )
+    print( f'Rank-{rank:02d} data gathering: ', sendbuf )
+
+    recvbuf = None
+    if rank == 0:
+        recvbuf = np.empty( numDataPerRank_gathering*size, dtype='d' )
+
+    comm.Gather( sendbuf, recvbuf, root=0 )
+
+    if rank == 0:
+        print( f'Rank-{rank:02d} data gathered: ', recvbuf )
 
 
 
