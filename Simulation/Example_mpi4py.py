@@ -4,12 +4,6 @@ from mpi4py import MPI
 import numpy as np
 
 
-'''
-
-################################################################################################################
-################################################################################################################
-'''
-
 def main() -> None:
     """main function
     This function is a template.
@@ -23,19 +17,21 @@ def main() -> None:
     None
 
     """
+
+    # Initialization
     comm = MPI.COMM_WORLD
     size = comm.Get_size()
-    rank = comm.Get_rank()
-    previous_rank = (rank+size-1)%size
-    next_rank     = (rank+1)%size
-    print( f'My rank is Rank-{rank:02d}' )
+    my_rank = comm.Get_rank()
+    previous_rank = (my_rank+size-1)%size
+    next_rank     = (my_rank+1)%size
+    print( f'My rank is Rank-{my_rank:02d}' )
 
     numData_sending = 10
     comm.send( numData_sending, dest=next_rank )
 
-    data_sending = rank*np.linspace( 0.0, 3.14, numData_sending )
-    comm.Send( data_sending, dest=(rank+1)%size )
-    print( f'Rank-{rank:02d} data sent: ', data_sending )
+    data_sending = my_rank*np.linspace( 0.0, 3.14, numData_sending )
+    comm.Send( data_sending, dest=(my_rank+1)%size )
+    print( f'Rank-{my_rank:02d} data sent: ', data_sending )
 
     numData_recving = comm.recv( source=previous_rank )
     print( 'Number of data to receive: ', numData_recving )
@@ -43,10 +39,10 @@ def main() -> None:
     data_recving = np.empty( numData_recving, dtype='d' )  # allocate space to receive the array
     comm.Recv( data_recving, source=previous_rank )
 
-    print( f'Rank-{rank:02d} data received: ', data_recving )
+    print( f'Rank-{my_rank:02d} data received: ', data_recving )
 
     # Bcast
-    if rank == 0:
+    if my_rank == 0:
         # create a data array on process 0
         # in real code, this section might
         # read in data parameters from a file
@@ -55,46 +51,46 @@ def main() -> None:
     else:
         numData_bcasting = None
 
-    # broadcast numData and allocate array on other ranks:
+    # broadcast numData and allocate array on other my_ranks:
     numData_bcasting = comm.bcast( numData_bcasting, root=0 )
-    if rank != 0:
+    if my_rank != 0:
         data_bcasting = np.empty( numData_bcasting, dtype='d' )
 
     comm.Bcast( data_bcasting, root=0 ) # broadcast the array from rank 0 to all others
 
-    print( f'Rank-{rank:02d} data bcasted: ', data_bcasting )
+    print( f'Rank-{my_rank:02d} data bcasted: ', data_bcasting )
 
     # Scattering
     numDataPerRank_scattering = 10
     data_scattering = None
 
-    if rank == 0:
+    if my_rank == 0:
         data_scattering = np.linspace( 1, size*numDataPerRank_scattering, size*numDataPerRank_scattering )
         # when size=4 (using -n 4), data = [1.0:40.0]
 
     recvbuf = np.empty( numDataPerRank_scattering, dtype='d' ) # allocate space for recvbuf
     comm.Scatter( data_scattering, recvbuf, root=0 )
 
-    print( f'Rank-{rank:02d} data scattered: ', recvbuf )
+    print( f'Rank-{my_rank:02d} data scattered: ', recvbuf )
 
     # Gathering
     numDataPerRank_gathering = 10
-    sendbuf = np.linspace( rank*numDataPerRank_gathering+1, (rank+1)*numDataPerRank_gathering, numDataPerRank_gathering )
-    print( f'Rank-{rank:02d} data gathering: ', sendbuf )
+    sendbuf = np.linspace( my_rank*numDataPerRank_gathering+1, (my_rank+1)*numDataPerRank_gathering, numDataPerRank_gathering )
+    print( f'Rank-{my_rank:02d} data gathering: ', sendbuf )
 
     recvbuf = None
-    if rank == 0:
+    if my_rank == 0:
         recvbuf = np.empty( numDataPerRank_gathering*size, dtype='d' )
 
     comm.Gather( sendbuf, recvbuf, root=0 )
 
-    if rank == 0:
-        print( f'Rank-{rank:02d} data gathered: ', recvbuf )
+    if my_rank == 0:
+        print( f'Rank-{my_rank:02d} data gathered: ', recvbuf )
 
     # Reduce
-    value = np.array( rank, 'd' )
+    value = np.array( my_rank, 'd' )
 
-    print(' Rank: ',rank, ' value = ', value)
+    print(' Rank: ',my_rank, ' value = ', value)
 
     # initialize the np arrays that will store the results:
     value_sum   = np.array( 0.0, 'd' )
@@ -104,7 +100,7 @@ def main() -> None:
     comm.Reduce( value, value_sum, op=MPI.SUM, root=0 )
     comm.Reduce( value, value_max, op=MPI.MAX, root=0 )
 
-    if rank == 0:
+    if my_rank == 0:
         print(' Rank 0: value_sum =    ',value_sum)
         print(' Rank 0: value_max =    ',value_max)
 
