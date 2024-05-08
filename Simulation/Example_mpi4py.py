@@ -28,6 +28,8 @@ def main() -> None:
 
     print( f'My rank is Rank-{my_rank:02d}' )
 
+    # Send and Recv
+    print( 'Send and Recv' )
     numData_sending = 10
     comm.send( numData_sending, dest=next_rank )
 
@@ -44,6 +46,7 @@ def main() -> None:
     print( f'Rank-{my_rank:02d} data received: ', data_recving )
 
     # Bcast
+    print( 'Bcase' )
     if my_rank == 0:
         # create a data array on process 0
         # in real code, this section might
@@ -55,6 +58,7 @@ def main() -> None:
 
     # broadcast numData and allocate array on other my_ranks:
     numData_bcasting = comm.bcast( numData_bcasting, root=0 )
+
     if my_rank != 0:
         data_bcasting = np.empty( numData_bcasting, dtype='d' )
 
@@ -63,6 +67,7 @@ def main() -> None:
     print( f'Rank-{my_rank:02d} data bcasted: ', data_bcasting )
 
     # Scattering
+    print( 'Scatter' )
     numDataPerRank_scattering = 10
     data_scattering = None
 
@@ -76,6 +81,7 @@ def main() -> None:
     print( f'Rank-{my_rank:02d} data scattered: ', recvbuf )
 
     # Gathering
+    print( 'Gather' )
     numDataPerRank_gathering = 10
     sendbuf = np.linspace( my_rank*numDataPerRank_gathering+1, (my_rank+1)*numDataPerRank_gathering, numDataPerRank_gathering )
     print( f'Rank-{my_rank:02d} data gathering: ', sendbuf )
@@ -90,6 +96,7 @@ def main() -> None:
         print( f'Rank-{my_rank:02d} data gathered: ', recvbuf )
 
     # Reduce
+    print( 'Reduce' )
     value = np.array( my_rank, 'd' )
 
     print( ' Rank: ', my_rank, ' value = ', value )
