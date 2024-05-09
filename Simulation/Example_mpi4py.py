@@ -28,25 +28,29 @@ def main() -> None:
 
     print( f'My rank is Rank-{my_rank:02d}' )
 
+    comm.Barrier()
     # Send and Recv
-    print( 'Send and Recv' )
+    if my_rank == 0:
+        print( '' )
+        print( 'Send and Recv' )
+
     numData_sending = 10
     comm.send( numData_sending, dest=next_rank )
 
-    data_sending = my_rank*np.linspace( 0.0, 3.14, numData_sending )
+    data_sending    = my_rank*np.ones( numData_sending )
     comm.Send( data_sending, dest=next_rank )
-    print( f'Rank-{my_rank:02d} data sent: ', data_sending )
+    print( f'Rank-{my_rank:02d} data sent:     ', data_sending )
 
     numData_recving = comm.recv( source=prev_rank )
-    print( 'Number of data to receive: ', numData_recving )
-
-    data_recving = np.empty( numData_recving, dtype='d' )  # allocate space to receive the array
+    data_recving    = np.empty( numData_recving, dtype='d' )  # allocate space to receive the array
     comm.Recv( data_recving, source=prev_rank )
-
     print( f'Rank-{my_rank:02d} data received: ', data_recving )
 
+    comm.Barrier()
     # Bcast
-    print( 'Bcase' )
+    if my_rank == 0:
+        print( '' )
+        print( 'Bcast' )
     if my_rank == 0:
         # create a data array on process 0
         # in real code, this section might
