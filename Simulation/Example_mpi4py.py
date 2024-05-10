@@ -57,21 +57,25 @@ def main() -> None:
         # read in data parameters from a file
         numData_bcasting = 10
         data_bcasting    = np.linspace( 0.0, 3.14, numData_bcasting )
+        print( f'Rank-{my_rank:02d} data bcasting: ', data_bcasting )
     else:
         numData_bcasting = None
 
     # broadcast numData and allocate array on other my_ranks:
-    numData_bcasting = comm.bcast( numData_bcasting, root=0 )
+    numData_bcasted = comm.bcast( numData_bcasting, root=0 )
 
     if my_rank != 0:
-        data_bcasting = np.empty( numData_bcasting, dtype='d' )
+        data_bcasting = np.empty( numData_bcasted, dtype='d' )
 
     comm.Bcast( data_bcasting, root=0 ) # broadcast the array from rank 0 to all others
 
     print( f'Rank-{my_rank:02d} data bcasted: ', data_bcasting )
 
+    comm.Barrier()
     # Scattering
-    print( 'Scatter' )
+    if my_rank == 0:
+        print( '' )
+        print( 'Scatter' )
     numDataPerRank_scattering = 10
     data_scattering = None
 
