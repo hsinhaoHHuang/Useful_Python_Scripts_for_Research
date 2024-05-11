@@ -76,20 +76,26 @@ def main() -> None:
     if my_rank == 0:
         print( '' )
         print( 'Scatter' )
+
     numDataPerRank_scattering = 10
-    data_scattering = None
 
     if my_rank == 0:
         data_scattering = np.linspace( 1, Nrank*numDataPerRank_scattering, Nrank*numDataPerRank_scattering )
+        print( f'Rank-{my_rank:02d} data scattering: ', data_scattering )
         # when Nrank=4 (using -n 4), data = [1.0:40.0]
+    else:
+        data_scattering = None
 
-    recvbuf = np.empty( numDataPerRank_scattering, dtype='d' ) # allocate space for recvbuf
-    comm.Scatter( data_scattering, recvbuf, root=0 )
+    data_scattered = np.empty( numDataPerRank_scattering, dtype='d' ) # allocate space
 
-    print( f'Rank-{my_rank:02d} data scattered: ', recvbuf )
+    comm.Scatter( data_scattering, data_scattered, root=0 )
+    print( f'Rank-{my_rank:02d} data scattered: ', data_scattered )
 
+    comm.Barrier()
     # Gathering
-    print( 'Gather' )
+    if my_rank == 0:
+        print( '' )
+        print( 'Gather' )
     numDataPerRank_gathering = 10
     sendbuf = np.linspace( my_rank*numDataPerRank_gathering+1, (my_rank+1)*numDataPerRank_gathering, numDataPerRank_gathering )
     print( f'Rank-{my_rank:02d} data gathering: ', sendbuf )
