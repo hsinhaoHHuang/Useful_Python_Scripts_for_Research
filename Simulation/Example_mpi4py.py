@@ -56,7 +56,7 @@ def main() -> None:
         # in real code, this section might
         # read in data parameters from a file
         numData_bcasting = 10
-        data_bcasting    = np.linspace( 0.0, 3.14, numData_bcasting )
+        data_bcasting    = np.linspace( 0.0, 0.9, numData_bcasting )
         print( f'Rank-{my_rank:02d} data bcasting: ', data_bcasting )
     else:
         numData_bcasting = None
@@ -69,7 +69,7 @@ def main() -> None:
 
     comm.Bcast( data_bcasting, root=0 ) # broadcast the array from rank 0 to all others
 
-    print( f'Rank-{my_rank:02d} data bcasted: ', data_bcasting )
+    print( f'Rank-{my_rank:02d} data bcasted:  ', data_bcasting )
 
     comm.Barrier()
     # Scattering
@@ -89,7 +89,7 @@ def main() -> None:
     data_scattered = np.empty( numDataPerRank_scattering, dtype='d' ) # allocate space
 
     comm.Scatter( data_scattering, data_scattered, root=0 )
-    print( f'Rank-{my_rank:02d} data scattered: ', data_scattered )
+    print( f'Rank-{my_rank:02d} data scattered:  ', data_scattered )
 
     comm.Barrier()
     # Gathering
@@ -97,20 +97,23 @@ def main() -> None:
         print( '' )
         print( 'Gather' )
     numDataPerRank_gathering = 10
-    sendbuf = np.linspace( my_rank*numDataPerRank_gathering+1, (my_rank+1)*numDataPerRank_gathering, numDataPerRank_gathering )
-    print( f'Rank-{my_rank:02d} data gathering: ', sendbuf )
+    data_gathering = np.linspace( my_rank*numDataPerRank_gathering+1, (my_rank+1)*numDataPerRank_gathering, numDataPerRank_gathering )
+    print( f'Rank-{my_rank:02d} data gathering: ', data_gathering )
 
-    recvbuf = None
+    data_gathered = None
     if my_rank == 0:
-        recvbuf = np.empty( numDataPerRank_gathering*Nrank, dtype='d' )
+        data_gathered = np.empty( numDataPerRank_gathering*Nrank, dtype='d' )
 
-    comm.Gather( sendbuf, recvbuf, root=0 )
+    comm.Gather( data_gathering, data_gathered, root=0 )
 
     if my_rank == 0:
-        print( f'Rank-{my_rank:02d} data gathered: ', recvbuf )
+        print( f'Rank-{my_rank:02d} data gathered:  ', data_gathered )
 
+    comm.Barrier()
     # Reduce
-    print( 'Reduce' )
+    if my_rank == 0:
+        print( '' )
+        print( 'Reduce' )
     value = np.array( my_rank, 'd' )
 
     print( ' Rank: ', my_rank, ' value = ', value )
