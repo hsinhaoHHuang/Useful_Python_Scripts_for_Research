@@ -114,17 +114,18 @@ def main() -> None:
     if my_rank == 0:
         print( '' )
         print( 'Reduce' )
-    value = np.array( my_rank, 'd' )
 
-    print( ' Rank: ', my_rank, ' value = ', value )
+    data_reducing = np.array( my_rank, 'd' )
+
+    print( f'Rank-{my_rank:02d} data_reducing = ', data_reducing )
 
     # initialize the np arrays that will store the results:
     value_sum   = np.array( 0.0, 'd' )
     value_max   = np.array( 0.0, 'd' )
 
     # perform the reductions:
-    comm.Reduce( value, value_sum, op=MPI.SUM, root=0 )
-    comm.Reduce( value, value_max, op=MPI.MAX, root=0 )
+    comm.Reduce( data_reducing, value_sum, op=MPI.SUM, root=0 )
+    comm.Reduce( data_reducing, value_max, op=MPI.MAX, root=0 )
 
     if my_rank == 0:
         print( ' Rank 0: value_sum =    ', value_sum )
