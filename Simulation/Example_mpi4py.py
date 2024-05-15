@@ -29,6 +29,8 @@ def main() -> None:
     print( f'My rank is Rank-{my_rank:02d}' )
 
     comm.Barrier()
+
+    #------------------------------------------------------------------
     # Send and Recv
     if my_rank == 0:
         print( '' )
@@ -47,6 +49,8 @@ def main() -> None:
     print( f'Rank-{my_rank:02d} data received: ', data_recving )
 
     comm.Barrier()
+
+    #------------------------------------------------------------------
     # Bcast
     if my_rank == 0:
         print( '' )
@@ -72,6 +76,8 @@ def main() -> None:
     print( f'Rank-{my_rank:02d} data bcasted:  ', data_bcasting )
 
     comm.Barrier()
+
+    #------------------------------------------------------------------
     # Scattering
     if my_rank == 0:
         print( '' )
@@ -92,6 +98,8 @@ def main() -> None:
     print( f'Rank-{my_rank:02d} data scattered:  ', data_scattered )
 
     comm.Barrier()
+
+    #------------------------------------------------------------------
     # Gathering
     if my_rank == 0:
         print( '' )
@@ -110,26 +118,28 @@ def main() -> None:
         print( f'Rank-{my_rank:02d} data gathered:  ', data_gathered )
 
     comm.Barrier()
+
+    #------------------------------------------------------------------
     # Reduce
     if my_rank == 0:
         print( '' )
         print( 'Reduce' )
 
-    data_reducing = np.array( my_rank, 'd' )
+    data_reducing = np.array( 10.0+my_rank, 'd' )
 
     print( f'Rank-{my_rank:02d} data_reducing = ', data_reducing )
 
     # initialize the np arrays that will store the results:
-    value_sum   = np.array( 0.0, 'd' )
-    value_max   = np.array( 0.0, 'd' )
+    data_sum = np.array( 0.0, 'd' )
+    data_max = np.array( 0.0, 'd' )
 
     # perform the reductions:
-    comm.Reduce( data_reducing, value_sum, op=MPI.SUM, root=0 )
-    comm.Reduce( data_reducing, value_max, op=MPI.MAX, root=0 )
+    comm.Reduce( data_reducing, data_sum, op=MPI.SUM, root=0 )
+    comm.Reduce( data_reducing, data_max, op=MPI.MAX, root=0 )
 
     if my_rank == 0:
-        print( ' Rank 0: value_sum =    ', value_sum )
-        print( ' Rank 0: value_max =    ', value_max )
+        print( f'Rank-{my_rank:02d} data_sum      = ', data_sum )
+        print( f'Rank-{my_rank:02d} data_max      = ', data_max )
 
 
 if __name__ == '__main__':
