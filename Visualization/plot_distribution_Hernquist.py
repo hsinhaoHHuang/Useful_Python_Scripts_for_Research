@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-G    = 1.0
-a    = 1.0
-rho0 = 1.0/(2*np.pi)
-M0   = 2*np.pi*rho0*a**3
+G    = 1.0                 # Newton's Gravitational Constant
+a    = 1.0                 # scale radius
+rho0 = 1.0/(2*np.pi)       # scale density
+M0   = 2*np.pi*rho0*a**3   # scale mass
 
 def plot_radial_profiles( Radius, Dens, Mass, Pote, dDdPsi, ModelName ) -> None:
 
