@@ -33,6 +33,8 @@ with open(Particle_text_filename, 'r') as f:
     for line in f:
         if line.startswith('#'):
             header = line
+        elif line.startswith( '\n' ):
+            continue
         else:
             break #stop when there are no more #
 
