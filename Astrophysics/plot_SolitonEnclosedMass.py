@@ -123,7 +123,7 @@ def Soliton_Ek_Total_from_r_c_Chan2022( m_22, r_c ):
 def Soliton_sigma_from_r_c_Chan2022( m_22, r_c ):
     ELBDM_Eta = m_22*(1.0e-22*u.eV/u.c**2)/u.hbar
 
-    sigma     = ( (2.0/9.0*0.692*1.299**2)*(ELBDM_Eta*r_c)**-2 )**0.5
+    sigma     = np.sqrt( (2.0/9.0*0.692*1.299**2) )/(ELBDM_Eta*r_c)
     return sigma
 
 
