@@ -67,9 +67,9 @@ m_to_km         = 1e-3
 km_to_m         = 1e+3
 codemass_to_kg  = 2.57725326e+41
 
-Newton_G     = 4.30078846e-06
-ELBDM_Eta    = 7.74803816e+03/100.0/Mpc_h_to_kpc # in (s/km)(1/kpc)
-ELBDM_Mass   = 1.0e-22                           # in eV/c^2
+Newton_G        = 4.30078846e-06
+ELBDM_Eta       = 7.74803816e+03/100.0/Mpc_h_to_kpc # in (s/km)(1/kpc)
+ELBDM_Mass      = 1.0e-22                           # in eV/c^2
 
 ###############################################################################
 def Diameter_granule( sigma ): # in kpc (sigma in km/s)
@@ -96,7 +96,6 @@ ax[0].plot( VelocityDispersion_r*Mpc_h_to_kpc, VelocityDispersion_sigma*m_to_km*
 # Set the limit
 ax[0].set_xlim( Table_data["Condensation_Env_R"][0]-1 , Table_data["Condensation_Env_R"][-1]+1 )
 ax[0].set_ylim( 10.0, 34.0 )
-#ax[0].set_yscale("log")
 
 # Set the label
 ax[0].set_xlabel( r"$r\ ({\rm kpc})$" )
@@ -128,9 +127,6 @@ ax[1].set_ylim( 1.0, 4.2 )
 ax[1].set_xlabel( r"$r\ ({\rm kpc})$" )
 ax[1].set_ylabel( r"$d_{\rm granule}\ ({\rm kpc})$" )
 
-# Set the legend
-#ax[1].legend(loc = 'upper right')
-
 # Set grids and ticks
 ax[1].grid()
 ax[1].xaxis.set_ticks_position('both')
@@ -148,14 +144,10 @@ ax[2].plot( VelocityDispersion_r*Mpc_h_to_kpc, kbTemperature_granule( VelocityDi
 # Set the limit
 ax[2].set_xlim( Table_data["Condensation_Env_R"][0]-1 , Table_data["Condensation_Env_R"][-1]+1 )
 ax[2].set_ylim( 1.0e-31, 1.2e-30 )
-#ax[2].set_yscale("log")
 
 # Set the label
 ax[2].set_xlabel( r"$r\ ({\rm kpc})$" )
 ax[2].set_ylabel( r"$k_bT_{\rm granule}\ ({\rm eV})$" )
-
-# Set the legend
-#ax[1].legend(loc = 'upper right')
 
 # Set grids and ticks
 ax[2].grid()
@@ -168,8 +160,8 @@ ax[2].tick_params(which='both',direction='in')
 
 # Save the figure
 fig.set_dpi(dpi)
-fig.set_size_inches(fig_size_x, fig_size_y)
+fig.set_size_inches( fig_size_x, fig_size_y )
 
-plt.tight_layout(pad=0.1, h_pad=0.1, w_pad=0.1)
+plt.tight_layout( pad=0.1, h_pad=0.1, w_pad=0.1 )
 fig.savefig("fig_GranuleSize.png", dpi=dpi)
 fig.clear()
