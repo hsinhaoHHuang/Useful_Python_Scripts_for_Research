@@ -115,7 +115,6 @@ ax[0].tick_params(which='both',direction='in')
 
 ax[1].plot( Table_data["Condensation_Env_R"],  Diameter_granule( Table_data["Condensation_v"]/np.sqrt(3) ),        '-o',  color='C0',  linewidth=LINE_WIDTH,  markersize=MARK_SIZE,  label=r"$\sqrt{\frac{1}{3}\langle v^2\rangle_{\rm enc}}$"   )
 ax[1].plot( Table_data["Condensation_Env_R"],  Diameter_granule( Table_data["Condensation_Shell_v"]/np.sqrt(3) ),  '-o',  color='C1',  linewidth=LINE_WIDTH,  markersize=MARK_SIZE,  label=r"$\sqrt{\frac{1}{3}\langle v^2\rangle_{\rm shell}}$" )
-#ax[1].plot( Table_data["Condensation_Env_R"],  Diameter_granule( Orbital_v/np.sqrt(2) ),                           '-o',  color='C2',  linewidth=LINE_WIDTH,  markersize=MARK_SIZE,  label=r"$\sqrt{GM_{\rm enc}/r}/\sqrt{2}$"                   )
 ax[1].plot( VelocityDispersion_r*Mpc_h_to_kpc, Diameter_granule( VelocityDispersion_sigma*m_to_km*np.sqrt(2) ),    '--',  color='C3',  linewidth=LINE_WIDTH,  markersize=MARK_SIZE,  label=r'$\sigma_{\rm Jeans}$'                               )
 
 # Set the limit
@@ -138,7 +137,6 @@ ax[1].tick_params(which='both',direction='in')
 
 ax[2].plot( Table_data["Condensation_Env_R"],  kbTemperature_granule( Table_data["Condensation_v"]/np.sqrt(3) ),        '-o',  color='C0',  linewidth=LINE_WIDTH,  markersize=MARK_SIZE,  label=r"$\sqrt{\frac{1}{3}\langle v^2\rangle_{\rm enc}}$"   )
 ax[2].plot( Table_data["Condensation_Env_R"],  kbTemperature_granule( Table_data["Condensation_Shell_v"]/np.sqrt(3) ),  '-o',  color='C1',  linewidth=LINE_WIDTH,  markersize=MARK_SIZE,  label=r"$\sqrt{\frac{1}{3}\langle v^2\rangle_{\rm shell}}$" )
-#ax[2].plot( Table_data["Condensation_Env_R"],  kbTemperature_granule( Orbital_v/np.sqrt(2) ),                           '-o',  color='C2',  linewidth=LINE_WIDTH,  markersize=MARK_SIZE,  label=r"$\sqrt{GM_{\rm enc}/r}/\sqrt{2}$"                   )
 ax[2].plot( VelocityDispersion_r*Mpc_h_to_kpc, kbTemperature_granule( VelocityDispersion_sigma*m_to_km*np.sqrt(2) ),    '--',  color='C3',  linewidth=LINE_WIDTH,  markersize=MARK_SIZE,  label=r'$\sigma_{\rm Jeans}$'                               )
 
 # Set the limit
