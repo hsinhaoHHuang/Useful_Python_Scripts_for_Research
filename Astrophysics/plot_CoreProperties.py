@@ -21,8 +21,6 @@ def X_IntersectionInLogSpace( X_1, X_2, F_1, F_2, G_1, G_2  ):
 Step, Time, CoreDensity, CoreRadius, CoreMass, CoreRadiusCoreMass = np.loadtxt( '../Record__CoreProperties', skiprows=1, unpack=True )
 
 # decide the units for plotting
-#UNIT_L_PLOT = 'code_length'
-#UNIT_D_PLOT = 'code_density'
 UNIT_T_PLOT  = 'Myr'
 UNIT_L_PLOT  = 'kpc'
 UNIT_M_PLOT  = 'Msun'
