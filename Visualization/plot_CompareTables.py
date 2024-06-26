@@ -60,8 +60,7 @@ def LoadTable( filename ):
         f.close()
 
     file_header = header[1:].strip().split()
-    file_table  = np.genfromtxt( filename, delimiter=None, comments='#',
-                                 names=file_header, dtype=None, encoding=None )
+    file_table  = np.genfromtxt( filename, delimiter=None, comments='#', names=file_header, dtype=None, encoding=None )
 
     print( 'done!' )
     return file_table
