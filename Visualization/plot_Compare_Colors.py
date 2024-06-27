@@ -46,24 +46,28 @@ def plot_compare_colors() -> None:
     ax1.plot( x, np.sin(x+0), color='r',                  label='default' )
     ax1.plot( x, np.sin(x+1), color='xkcd:red',           label='xkcd'    )
     ax1.plot( x, np.sin(x+2), color=Miville_color['red'], label='Miville' )
+    ax1.plot( x, np.sin(x+3), color=Sasha_color['red'],   label='Sasha'   )
     ax1.legend()
 
     ax2 = fig.add_subplot(542)
     ax2.plot( x, np.sin(x+0), color='g',                    label='default' )
     ax2.plot( x, np.sin(x+1), color='xkcd:green',           label='xkcd'    )
     ax2.plot( x, np.sin(x+2), color=Miville_color['green'], label='Miville' )
+    ax2.plot( x, np.sin(x+3), color=Sasha_color['green'],   label='Sasha'   )
     ax2.legend()
 
     ax3 = fig.add_subplot(543)
     ax3.plot( x, np.sin(x+0), color='b',                    label='default' )
     ax3.plot( x, np.sin(x+1), color='xkcd:blue',            label='xkcd'    )
     ax3.plot( x, np.sin(x+2), color=Miville_color['blue'],  label='Miville' )
+    ax3.plot( x, np.sin(x+3), color=Sasha_color['blue'],    label='Sasha'   )
     ax3.legend()
 
     ax4 = fig.add_subplot(544)
     ax4.plot( x, np.sin(x+0), color='y',                    label='default' )
     ax4.plot( x, np.sin(x+1), color='xkcd:yellow',          label='xkcd'    )
     ax4.plot( x, np.sin(x+2), color=Miville_color['yellow'],label='Miville' )
+    ax4.plot( x, np.sin(x+3), color=Sasha_color['yellow'],  label='Sasha'   )
     ax4.legend()
 
     # save to file
