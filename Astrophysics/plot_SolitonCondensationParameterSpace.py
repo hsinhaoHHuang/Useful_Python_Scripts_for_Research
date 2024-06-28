@@ -13,9 +13,6 @@ vel     = [ ]
 tau_gr  = [ ]
 r_gr    = [ ]
 
-#TAU_GR = tau_gr[0]*((M22_Grid/m22[0])**3)*((VEL_Grid/vel[0])**6)/((RHO_Grid/rho[0])**2)
-Log_Tau_gr = lambda x, y, z : np.log10(tau_gr[0]) + 3*(x-1-np.log10(m22[0])) + 6*(y+1-np.log10(vel[0])) -2*(z-np.log10(rho[0]))
-
 marker_size = 60
 
 fig = plt.figure(figsize=(9,4))
@@ -148,5 +145,7 @@ fig.tight_layout( pad = 0.3, w_pad=-1.0 )
 fig.savefig("fig_ParameterSpace_out.png")
 plt.close()
 #################################################################################################
+
+Log_Tau_gr = lambda x, y, z : np.log10(tau_gr[0]) + 3*(x-1-np.log10(m22[0])) + 6*(y+1-np.log10(vel[0])) -2*(z-np.log10(rho[0]))
 
 gifname = plotter.plot4d( Log_Tau_gr, np.linspace(4,7,30), func_name="Log_Tau_gr", fps=5 )
