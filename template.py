@@ -21,7 +21,7 @@ def ExampleFunc(arg1: int, arg2:int, *args, **kwargs) -> bool:
     -------
     bool
         Description of return value
-  
+
     Raises
     ------
     AttributeError
