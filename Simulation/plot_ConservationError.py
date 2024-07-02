@@ -111,5 +111,12 @@ def main() -> None:
     fig.set_dpi(dpi)
     fig.savefig( 'fig_ConservationError.png', dpi=dpi )
 
+    ax.set_xscale('symlog', linthresh=2e+1)
+    ax.set_yscale('symlog', linthresh=2e-1)
+    # save to file
+    plt.tight_layout( pad=0.2 )
+    fig.set_dpi(dpi)
+    fig.savefig( 'fig_ConservationError_log.png', dpi=dpi )
+
 if __name__ == '__main__':
     main()
