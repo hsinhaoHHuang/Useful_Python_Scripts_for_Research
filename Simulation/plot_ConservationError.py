@@ -84,22 +84,24 @@ def main() -> None:
     ax = fig.add_subplot(111)
 
     ax.set_title( 'Conservation Error' )
-    ax.plot( Table1['Time'], (Table1['Mass_Psi']-Mass_Psi_Ref)/np.abs(Mass_Psi_Ref)*100.0, '-', color='C0', label='Mass'  )
-    ax.plot( Table2['Time'], (Table2['Mass_Psi']-Mass_Psi_Ref)/np.abs(Mass_Psi_Ref)*100.0, '-', color='C0', label='_Mass' )
-    ax.plot( Table3['Time'], (Table3['Mass_Psi']-Mass_Psi_Ref)/np.abs(Mass_Psi_Ref)*100.0, '-', color='C0', label='_Mass' )
-    ax.plot( Table4['Time'], (Table4['Mass_Psi']-Mass_Psi_Ref)/np.abs(Mass_Psi_Ref)*100.0, '-', color='C0', label='_Mass' )
-    ax.plot( Table1['Time'], (Table1['Etot_Psi']-Etot_Psi_Ref)/np.abs(Etot_Psi_Ref)*100.0, '-', color='C1', label='Etot'  )
-    ax.plot( Table2['Time'], (Table2['Etot_Psi']-Etot_Psi_Ref)/np.abs(Etot_Psi_Ref)*100.0, '-', color='C1', label='_Etot' )
-    ax.plot( Table3['Time'], (Table3['Etot_Psi']-Etot_Psi_Ref)/np.abs(Etot_Psi_Ref)*100.0, '-', color='C1', label='_Etot' )
-    ax.plot( Table4['Time'], (Table4['Etot_Psi']-Etot_Psi_Ref)/np.abs(Etot_Psi_Ref)*100.0, '-', color='C1', label='_Etot' )
-    ax.axvline( Table1['Time'][(Table1['Step']==StepShow)][0]*code_time_to_Myr, linestyle='--', color='C4', label='Step = %d'%StepShow )
-    ax.axhline( Table1['Mass_Psi_RErr'][(Table1['Step']==StepShow)][0]*100.0,   linestyle=':',  color='C0', label='%5.2f%%'%(Table1['Mass_Psi_RErr'][(Table1['Step']==StepShow)][0]*100.0) )
-    ax.axhline( Table1['Etot_Psi_RErr'][(Table1['Step']==StepShow)][0]*100.0,   linestyle=':',  color='C1', label='%5.2f%%'%(Table1['Etot_Psi_RErr'][(Table1['Step']==StepShow)][0]*100.0) )
+    ax.plot( Table1['Time'], (Table1['Mass_Psi']-Mass_Psi_Ref)/np.abs(Mass_Psi_Ref)*100.0, linestyle='-',  color='C0', label='Mass'  )
+    ax.plot( Table2['Time'], (Table2['Mass_Psi']-Mass_Psi_Ref)/np.abs(Mass_Psi_Ref)*100.0, linestyle='-',  color='C0', label='_Mass' )
+    ax.plot( Table3['Time'], (Table3['Mass_Psi']-Mass_Psi_Ref)/np.abs(Mass_Psi_Ref)*100.0, linestyle='-',  color='C0', label='_Mass' )
+    ax.plot( Table4['Time'], (Table4['Mass_Psi']-Mass_Psi_Ref)/np.abs(Mass_Psi_Ref)*100.0, linestyle='-',  color='C0', label='_Mass' )
+    ax.plot( Table1['Time'], (Table1['Etot_Psi']-Etot_Psi_Ref)/np.abs(Etot_Psi_Ref)*100.0, linestyle='-',  color='C1', label='Etot'  )
+    ax.plot( Table2['Time'], (Table2['Etot_Psi']-Etot_Psi_Ref)/np.abs(Etot_Psi_Ref)*100.0, linestyle='-',  color='C1', label='_Etot' )
+    ax.plot( Table3['Time'], (Table3['Etot_Psi']-Etot_Psi_Ref)/np.abs(Etot_Psi_Ref)*100.0, linestyle='-',  color='C1', label='_Etot' )
+    ax.plot( Table4['Time'], (Table4['Etot_Psi']-Etot_Psi_Ref)/np.abs(Etot_Psi_Ref)*100.0, linestyle='-',  color='C1', label='_Etot' )
+    ax.axvline( Table1['Time'][(Table1['Step']==StepShow)][0],                             linestyle='--', color='C4', label='Step = %d'%StepShow )
+    ax.axhline( Table1['Mass_Psi_RErr'][(Table1['Step']==StepShow)][0]*100.0,              linestyle=':',  color='C0', label='%5.2f%%'%(Table1['Mass_Psi_RErr'][(Table1['Step']==StepShow)][0]*100.0) )
+    ax.axhline( Table1['Etot_Psi_RErr'][(Table1['Step']==StepShow)][0]*100.0,              linestyle=':',  color='C1', label='%5.2f%%'%(Table1['Etot_Psi_RErr'][(Table1['Step']==StepShow)][0]*100.0) )
+
     ax.set_xlabel( 'Time (code_time)' )
     ax.set_ylabel( 'Relative Error (%)' )
     ax.set_xlim( left=0.0 )
     ax.set_ylim( -100.0, 100.0 )
     ax.grid()
+
     ax.set_yticks([ i for i in range(-100, 100, 10) ])
     ax.xaxis.get_ticklocs( minor=True )
     ax.yaxis.get_ticklocs( minor=True )
@@ -114,8 +116,10 @@ def main() -> None:
     fig.set_dpi(dpi)
     fig.savefig( 'fig_ConservationError.png', dpi=dpi )
 
+    # log scale
     ax.set_xscale('symlog', linthresh=(Table1['Time'][(Table1['Step']==1)][0]*code_time_to_Myr))
     ax.set_yscale('symlog', linthresh=1e-4)
+
     # save to file
     plt.tight_layout( pad=0.2 )
     fig.set_dpi(dpi)
