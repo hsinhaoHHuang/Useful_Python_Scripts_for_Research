@@ -1,7 +1,7 @@
 import numpy as np
 
 # =============================================================================================================
-# Table of Content
+# Table of Contents
 # =============================================================================================================
 # Step 01. Set precision to output
 # Step 02. Read the text file of particle initial condition
