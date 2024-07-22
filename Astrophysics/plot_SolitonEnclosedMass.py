@@ -161,8 +161,8 @@ def main() -> None:
 
     """
 
-    m22    = 0.2
-    Mh     = 1.88156694e+10*u.Msun
+    m22    = 1.0
+    Mh     = 1.0e+10*u.Msun
     rc     = Soliton_r_c_from_CHrelation_Schive2014( m22, Mh )
 
     radius = np.linspace( 0.1*rc, 4.0*rc, 1000 )
