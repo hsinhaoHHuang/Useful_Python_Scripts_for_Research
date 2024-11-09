@@ -26,9 +26,9 @@ and the amplitudes of different plane wave wavelengths $A( k )$ follow a Gaussia
 
 ## Center of the Gaussian distribution in k-space
 
-$$
+```math
   k_0 = \mathrm{ center~of~the~initial~density~distribution~in~k~space~ } \tilde{ \rho }( k, t=0 ) = | \tilde{ \psi }( k, t=0 ) |^2
-$$
+```
 
 - The velocity of the center of the wave packet in x-space = the group velocity of the central k-mode =
 
