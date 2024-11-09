@@ -82,6 +82,12 @@ def plot_compare_colors() -> None:
     ax6.plot( x, np.sin(x+3), color=Sasha_color['magenta'], label='Sasha'   )
     ax6.legend()
 
+    ax7 = fig.add_subplot(547)
+    ax7.plot( x, np.sin(x+0), color='orange',               label='default' )
+    ax7.plot( x, np.sin(x+1), color='xkcd:orange',          label='xkcd'    )
+    ax7.plot( x, np.sin(x+3), color=Sasha_color['orange'],  label='Sasha'   )
+    ax7.legend()
+
     # save to file
     plt.tight_layout()
     fig.savefig( 'fig_compare_colors.png' )
