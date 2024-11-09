@@ -171,7 +171,7 @@ Let’s break it down and simplify each part
 ```math
   \begin{aligned}
 
-  \exp \Big[ - \frac{ ( x - x_0 - i k_0 \alpha )^2 }{ 2 ( \alpha + i \frac{ \hbar }{ m } t ) } \Big]
+  \exp \left[ - \frac{ ( x - x_0 - i k_0 \alpha )^2 }{ 2 ( \alpha + i \frac{ \hbar }{ m } t ) } \right]
   &=
   \exp \Big[ - \frac{ ( x - x_0 )^2 - k_0^2 \alpha^2 - 2 i ( x - x_0 ) k_0 \alpha }{ 2 \alpha ( 1 + i \frac{ \hbar t }{ m \alpha } ) } \Big] \\
   &=
@@ -395,7 +395,7 @@ The density distribution is the square of the wave function
   &=
   \frac{ 1 }{ \{ \pi w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] \}^{ 1 / 4 } } \exp \Big[ { - \frac{ 1 }{ 2 } \frac{ ( x - x_0 -v_0 t )^2 }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } } \Big] \exp \Big[ i \Big( - \frac{ 1 }{ 2 } \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 } } \big ) + \frac{ 1 }{ 2 }( x - x_0 - v_0 t )^2 \frac{ ( \frac{ \hbar t }{ m w_0^2 } ) }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } + v_0 \frac{ m }{ \hbar }( x - x_0 - \frac{ 1 }{ 2 } v_0 t ) \Big) \Big] \\
   &=
-  \frac{ 1 }{ \{ 2 \pi \sigma_{ x, 0 }^2 \left[ 1 + \Left( \frac{ hbar t }{ 2 m \sigma_{ x, 0 }^2 } \Right)^2 \right] \}^{ 1 / 4 } } \exp \Big[ { - \frac{ 1 }{ 2 } \frac{ ( x - x_0 - v_0 t )^2 }{ 2 \sigma_{ x, 0 }^2 [ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 ] } } \Big] \exp \Big[ i \Big( - \frac{ 1 }{ 2 } \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x , 0 }^2 } )^2 } } \big) + \frac{ 1 }{ 2 } ( x - x_0 - v_0 t )^2 \frac{ ( \frac{ \hbar t }{ 2 m \sigma_{ x , 0 }^2 } ) }{ 2 \sigma_{ x, 0 }^2 [ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 ] } + v_0 \frac{ m }{ \hbar } ( x - x_0 - \frac{ 1 }{ 2 } v_0 t ) \Big) \Big]
+  \frac{ 1 }{ \{ 2 \pi \sigma_{ x, 0 }^2 [ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 ] \}^{ 1 / 4 } } \exp \Big[ { - \frac{ 1 }{ 2 } \frac{ ( x - x_0 - v_0 t )^2 }{ 2 \sigma_{ x, 0 }^2 [ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 ] } } \Big] \exp \Big[ i \Big( - \frac{ 1 }{ 2 } \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x , 0 }^2 } )^2 } } \big) + \frac{ 1 }{ 2 } ( x - x_0 - v_0 t )^2 \frac{ ( \frac{ \hbar t }{ 2 m \sigma_{ x , 0 }^2 } ) }{ 2 \sigma_{ x, 0 }^2 [ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 ] } + v_0 \frac{ m }{ \hbar } ( x - x_0 - \frac{ 1 }{ 2 } v_0 t ) \Big) \Big]
 
   \end{aligned}
 ```
