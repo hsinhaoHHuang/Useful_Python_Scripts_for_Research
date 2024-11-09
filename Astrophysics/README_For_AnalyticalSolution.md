@@ -239,6 +239,7 @@ Finally, we can combine all the parts together to get
   \frac{ 1 }{ ( \pi \alpha )^{ 1 / 4 } } \frac{ 1 }{ ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } )^{ 1 / 4 } } \exp \Big[ -i \frac{ 1 }{ 2 } { \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } } } \big) } \Big] \exp \Big[ - \frac{ ( x - x_0 - k_0 \frac{ \hbar }{ m } t )^2 }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \exp \Big[ i \frac{ ( x - x_0 - k_0 \frac{ \hbar t }{ m } )^2 \frac{ \hbar t }{ m \alpha } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \exp \Big[ i \Big( k_0 ( x - x_0 - \frac{ 1 }{ 2 } k_0 \frac{ \hbar t }{ m } ) \Big) \Big] \\
 
   \end{aligned}
+```
 
 ```math
   \begin{aligned}
