@@ -9,15 +9,15 @@ The Gaussian wave packet is a solution of the free-particle Schrodinger equation
   i \hbar \frac{ \partial }{ \partial t } \psi( x, t ) = - \frac{ \hbar^2 }{ 2 m } \frac{ \partial^2 }{ \partial x^2 } \psi( x, t )
 ```
 
-where $\psi( x, t )$ is the wave function in x-space, $m$ is the particle mass, and $\hbar$ is the reduced Planck constant.
+where $`\psi( x, t )`$ is the wave function in x-space, $`m`$ is the particle mass, and $`\hbar`$ is the reduced Planck constant.
 
-Its wave function can be seen as a superposition of the plane waves, $`A( k ) e^{ i ( k x - \omega t ) }`$, where the angular frequency $\omega$ and the wavenumber $k$ follow the dispersion relation
+Its wave function can be seen as a superposition of the plane waves, $`A( k ) e^{ i ( k x - \omega t ) }`$, where the angular frequency $`\omega`$ and the wavenumber $`k`$ follow the dispersion relation
 
 ```math
   \omega = \frac{ \hbar k^2 }{ 2 m }
 ```
 
-and the amplitudes of different plane wave wavelengths $A( k )$ follow a Gaussian distribution.
+and the amplitudes of different plane wave wavelengths $`A( k )`$ follow a Gaussian distribution.
 
 
 ---
@@ -45,7 +45,7 @@ and the amplitudes of different plane wave wavelengths $A( k )$ follow a Gaussia
 
 ## Wave function in k-space
 
-At $t=0$, the density in k-space is a Gaussian distribution with the center $k_0$ and width $\sigma_{k, 0}$.
+At $`t=0`$, the density in k-space is a Gaussian distribution with the center $`k_0`$ and width $`\sigma_{k, 0}`$.
 
 The corresponding wave function is
 
@@ -53,9 +53,9 @@ The corresponding wave function is
   \tilde{ \psi }( k, t=0 ) = \frac{ 1 }{ \sqrt{ \sigma_{ k, 0 } \sqrt{ 2 \pi } } } \exp \Big[ - \frac{ ( k - k_0 )^2 }{ 4 \sigma_{ k, 0 }^2 } \Big]
 ```
 
-- The normalization of the wave function in k-space: $\int_{-\infty}^{\infty} |\tilde{\psi}(k, t=0)|^2 dk = 1$
+- The normalization of the wave function in k-space: $`\int_{-\infty}^{\infty} |\tilde{\psi}(k, t=0)|^2 dk = 1`$
 
-At time $t$, we have
+At time $`t`$, we have
 
 ```math
   \begin{aligned}
@@ -101,7 +101,7 @@ The wave function in the x-space is the inverse Fourier transform of the wave fu
   \psi( x^\prime, t ) = \frac{ 1 }{ \sqrt{ 2 \pi } } \int_{ -\infty }^{ \infty } \tilde{ \psi }( k, t ) e^{ i k x^\prime } dk
 ```
 
-where $x^\prime = x - x_0$.
+where $`x^\prime = x - x_0`$.
 
 With the Gaussian k-space wave function, we get
 
@@ -117,7 +117,7 @@ With the Gaussian k-space wave function, we get
   \end{aligned}
 ```
 
-With the [Gaussian integral formula](https://en.wikipedia.org/wiki/Gaussian_integral#The_integral_of_a_Gaussian_function), $\int_{ -\infty }^{ \infty } e^{ -( a x^2 + b x + c ) } dx = \sqrt{ \frac{ \pi }{ a } } e^{ \frac{ b^2 }{ 4 a } - c }$, we can integrate it to get
+With the [Gaussian integral formula](https://en.wikipedia.org/wiki/Gaussian_integral#The_integral_of_a_Gaussian_function), $`\int_{ -\infty }^{ \infty } e^{ -( a x^2 + b x + c ) } dx = \sqrt{ \frac{ \pi }{ a } } e^{ \frac{ b^2 }{ 4 a } - c }`$, we can integrate it to get
 
 ```math
   \begin{aligned}
@@ -133,7 +133,7 @@ With the [Gaussian integral formula](https://en.wikipedia.org/wiki/Gaussian_inte
   \end{aligned}
 ```
 
-Here, we introduce the new parameter, $\alpha = w_0^2 = 2 \sigma_{ x, 0 }^2$, to simplify the equation
+Here, we introduce the new parameter, $`\alpha = w_0^2 = 2 \sigma_{ x, 0 }^2`$, to simplify the equation
 
 ```math
   \psi( x, t )
@@ -247,6 +247,8 @@ Finally, we can combine all the parts together to get
   \psi( x, t )
   &=
   \frac{ 1 }{ ( \pi w_0^2 )^{ 1 / 4 } } \frac{ 1 }{ [ 1 + \frac{ \hbar^2 t^2 }{ m^2 ( w_0^2 )^2 } ]^{ 1 / 4 } } \exp \Big[ -i \frac{ 1 }{ 2 } { \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + \frac{ \hbar^2 t^2 }{ m^2 ( w_0^2 )^2 } } } \big) } \Big] \exp \Big[ - \frac{ ( x - x_0 - v_0 t )^2 }{ 2 ( w_0^2 ) ( 1 + \frac{ \hbar^2 t^2 }{ m^2 ( w_0^2 )^2 } ) } \Big] \exp \Big[ i \frac{ ( x - x_0 - v_0 t )^2 \frac{ \hbar t }{ m ( w_0^2 ) } }{ 2 ( w_0 )^2 ( 1 + \frac{ \hbar^2 t^2 }{ m^2 ( w_0^2 )^2 } ) } \Big] \exp \Big[ i \Big( v_0 \frac{ m }{ \hbar } ( x - x_0 - \frac{ 1 }{ 2 } v_0 t \Big) \Big] \\
+  &=
+  \frac{ 1 }{ \{ \pi w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] \}^{ 1 / 4 } } \exp \Big[ { - \frac{ 1 }{ 2 } \frac{ ( x - x_0 - v_0 t )^2 }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } } \Big] \exp \Big[ i \Big( - \frac{ 1 }{ 2 } \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 } } \big ) + \frac{ 1 }{ 2 } ( x - x_0 - v_0 t )^2 \frac{ ( \frac{ \hbar t }{ m w_0^2 } ) }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } + v_0 \frac{ m }{ \hbar }( x - x_0 - \frac{ 1 }{ 2 } v_0 t ) \Big) \Big] \\
 
   \end{aligned}
 ```
@@ -255,8 +257,6 @@ Finally, we can combine all the parts together to get
   \begin{aligned}
 
   \psi( x, t )
-  &=
-  \frac{ 1 }{ \{ \pi w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] \}^{ 1 / 4 } } \exp \Big[ { - \frac{ 1 }{ 2 } \frac{ ( x - x_0 - v_0 t )^2 }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } } \Big] \exp \Big[ i \Big( - \frac{ 1 }{ 2 } \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 } } \big ) + \frac{ 1 }{ 2 } ( x - x_0 - v_0 t )^2 \frac{ ( \frac{ \hbar t }{ m w_0^2 } ) }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } + v_0 \frac{ m }{ \hbar }( x - x_0 - \frac{ 1 }{ 2 } v_0 t ) \Big) \Big] \\
   &=
   \frac{ 1 }{ \{ 2 \pi \sigma_{ x, 0 }^2 [ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 ] \}^{ 1 / 4 } } \exp \Big[ { - \frac{ 1 }{ 2 } \frac{ ( x - x_0 - v_0 t )^2 }{ 2 \sigma_{ x, 0 }^2 [ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x , 0 }^2 } )^2 ] } } \Big] \exp \Big[ i \Big( - \frac{ 1 }{ 2 } \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 } } \big) + \frac{ 1 }{ 2 }( x - x_0 - v_0 t )^2 \frac{ ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } ) }{ 2 \sigma_{ x, 0 }^2 [ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 ] } + v_0 \frac{ m }{ \hbar }( x - x_0 - \frac{ 1 }{ 2 } v_0 t ) \Big) \Big]
 
@@ -279,9 +279,9 @@ The density distribution is the square of the wave function
   \end{aligned}
 ```
 
-- The normalization of the density distribution: $\int_{ -\infty }^{ \infty } \rho( x, t ) dx = 1$
-- The center of the Gaussian distribution will be at $x_0 + v_0 t$ and move with velocity $v_0$.
-- The standard deviation of the Gaussian distribution $\sigma_{ x, t } = \sigma_{ x, 0 } \sqrt{ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 }$ will increase with time.
+- The normalization of the density distribution: $`\int_{ -\infty }^{ \infty } \rho( x, t ) dx = 1`$
+- The center of the Gaussian distribution will be at $`x_0 + v_0 t`$ and move with velocity $`v_0`$.
+- The standard deviation of the Gaussian distribution $`\sigma_{ x, t } = \sigma_{ x, 0 } \sqrt{ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 }`$ will increase with time.
 
 
 ---
