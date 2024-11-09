@@ -11,7 +11,7 @@ $$
 
 where $\psi( x, t )$ is the wave function in x-space, $m$ is the particle mass, and $\hbar$ is the reduced Planck constant.
 
-Its wave function can be seen as a superposition of the plane waves, $A( k ) e^{ i ( k x - \omega t ) }$, where the angular frequency $\omega$ and the wavenumber $k$ follow the dispersion relation
+Its wave function can be seen as a superposition of the plane waves, $`A( k ) e^{ i ( k x - \omega t ) }`$, where the angular frequency $\omega$ and the wavenumber $k$ follow the dispersion relation
 
 $$
   \omega = \frac{ \hbar k^2 }{ 2 m }
