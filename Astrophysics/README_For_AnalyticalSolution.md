@@ -38,11 +38,9 @@ $$
 
 - The velocity of the center of the wave packet in x-space = the group velocity of the central k-mode =
 
-    ```math
-    $$
-      v_0 = \frac{ \partial \omega }{ \partial k } {\Large \mid}_{ k = k_0 } = \frac{ \hbar }{ m } k_0
-    $$
-    ```
+$$
+  v_0 = \frac{ \partial \omega }{ \partial k } {\Large \mid}_{ k = k_0 } = \frac{ \hbar }{ m } k_0
+$$
 
 
 ## Width of the Gaussian distribution in k-space
@@ -450,7 +448,6 @@ $$
 
 ## Wave function
 
-```math
 $$
   \begin{aligned}
 
@@ -466,7 +463,6 @@ $$
 
   \end{aligned}
 $$
-```
 
 
 ---
