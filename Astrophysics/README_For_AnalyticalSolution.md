@@ -57,19 +57,15 @@ $$
 
 At time $t$, we have
 
-```math
 $$
   \begin{aligned}
-
   \tilde{ \psi }( k, t )
   &=
   \tilde{ \psi }( k, t=0 ) e^{ -i \omega t } \\
   &=
   \frac{ 1 }{ \sqrt{ \sigma_{ k, 0 } \sqrt{ 2 \pi } } } \exp \Big[ - \frac{ ( k - k_0 )^2 }{ 4 \sigma_{ k, 0 }^2 } - i \frac{ \hbar k^2 }{ 2 m } t \Big]
-
   \end{aligned}
 $$
-```
 
 
 ---
@@ -107,26 +103,20 @@ where $x^\prime = x - x_0$.
 
 With the Gaussian k-space wave function, we get
 
-```math
 $$
   \begin{aligned}
-
   \psi( x, t )
   &=
   \sqrt{ \frac{ 1 }{ 2 \pi \sigma_{ k, 0 } \sqrt{ 2 \pi } } } \int_{ -\infty }^{ \infty } \exp[ -\sigma_{ x, 0 }^2 ( k - k_0 )^2 - i \frac{ \hbar t }{ 2 m } k^2 + i k ( x - x_0 ) ] dk \\
   &=
   \sqrt{ \frac{ \sigma_{ x, 0 } }{ \pi \sqrt{ 2 \pi } } } \int_{ -\infty }^{ \infty } \exp{ [ -( ( \sigma_{ x, 0 }^2 + i \frac{ \hbar t }{ 2 m } ) k^2 - ( 2 \sigma_{ x, 0 }^2 k_0 + i ( x - x_0 ) ) k + \sigma_{ x, 0 }^2 k_0^2 ) ] } dk \\
-
   \end{aligned}
 $$
-```
 
 With the [Gaussian integral formula](https://en.wikipedia.org/wiki/Gaussian_integral#The_integral_of_a_Gaussian_function), $\int_{ -\infty }^{ \infty } e^{ -( a x^2 + b x + c ) } dx = \sqrt{ \frac{ \pi }{ a } } e^{ \frac{ b^2 }{ 4 a } - c }$, we can integrate it to get
 
-```math
 $$
   \begin{aligned}
-
   \psi( x, t )
   &=
   \sqrt{ \frac{ \sigma_{ x, 0 } }{ \pi \sqrt{ 2 \pi } } } \sqrt{ \frac{ \pi }{ ( \sigma_{ x, 0 }^2 + i \frac{ \hbar t }{ 2 m } ) } } \exp{ \Big[ \frac{ ( -i ( -i 2 \sigma_{ x, 0 }^2 k_0 + ( x - x_0 ) ) )^2 }{ 4 ( \sigma_{ x, 0 }^2 + i \frac{ \hbar t }{ 2 m } ) } - \sigma_{ x, 0 }^2 k_0^2 \Big] } \\
@@ -134,10 +124,8 @@ $$
   \frac{ 1 }{ \sqrt{ \sigma_{ x, 0 } \sqrt{ 2 \pi } } } \sqrt{ \frac{ \sigma_{ x, 0 }^2 }{ ( \sigma_{ x, 0 }^2 + i \frac{ \hbar t }{ 2 m } ) } } \exp{ \Big[ - \frac{ ( ( x - x_0 ) - i 2 \sigma_{ x, 0 }^2 k_0 )^2 }{ 4 ( \sigma_{ x, 0 }^2 + i \frac{ \hbar t }{ 2 m } ) } - \sigma_{ x, 0 }^2 k_0^2 \Big] } \\
   &=
   \frac{ 1 }{ \sqrt{ \sqrt{ 2 \pi \sigma_{ x, 0 }^2 } } } \sqrt{ \frac{ 2 \sigma_{ x, 0 }^2 }{ ( 2 \sigma_{ x, 0 }^2 + i \frac{ \hbar t }{ m } ) } } \exp{ \Big[ - \frac{ ( ( x - x_0 ) - i 2 \sigma_{ x , 0 }^2 k_0 )^2 }{ 2 ( 2 \sigma_{ x, 0 }^2 + i \frac{ \hbar t }{ m } ) } - \frac{ 2 \sigma_{ x, 0 }^2 k_0^2 }{ 2 } \Big] }
-
   \end{aligned}
 $$
-```
 
 Here, we introduce the new parameter, $\alpha = w_0^2 = 2 \sigma_{ x, 0 }^2$, to simplify the equation
 
@@ -155,10 +143,8 @@ Let’s break it down and simplify each part
 
 ### Part. I
 
-```math
 $$
   \begin{aligned}
-
   \sqrt{ \frac{ \alpha }{ \alpha + i \frac{ \hbar }{ m } t } }
   &=
   \sqrt{ \frac{ 1 }{ 1 + i \frac{ \hbar t }{ m \alpha } } } \\
@@ -170,17 +156,13 @@ $$
   \frac{ 1 }{ ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } )^{ 1 / 2 } } \Big[ \sqrt{ ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \exp \Big( -i { \cos^{ -1 } \big ( \frac{ 1 }{ \sqrt{ 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } } } \big) } \Big) \Big]^{ 1 / 2 } \\
   &=
   \frac{ 1 }{ ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) ^{ 1 / 4 } } \exp \Big[ -i \frac{ 1 }{ 2 }{ \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } } } \big) }\Big]
-
   \end{aligned}
 $$
-```
 
 ### Part. II
 
-```math
 $$
   \begin{aligned}
-
   \exp \Big[ - \frac{ ( x - x_0 - i k_0 \alpha )^2 }{ 2 ( \alpha + i \frac{ \hbar }{ m } t ) } \Big]
   &=
   \exp \Big[ - \frac{ ( x - x_0 )^2 - k_0^2 \alpha^2 - 2 i ( x - x_0 ) k_0 \alpha }{ 2 \alpha ( 1 + i \frac{ \hbar t }{ m \alpha } ) } \Big] \\
@@ -192,31 +174,23 @@ $$
   \underbrace{ \exp \Big[ - \frac{ ( x - x_0 )^2 - k_0^2 \alpha^2 - 2 ( x - x_0 ) k_0 \frac{ \hbar t }{ m } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] }_\mathrm{ Part.\ II-1 }
   \times
   \underbrace{ \exp \Big[ i \frac{ ( x - x_0 )^2 \frac{ \hbar t }{ m \alpha } - k_0^2 \alpha^2 \frac{ \hbar t }{ m \alpha } + 2 ( x - x_0 ) k_0 \alpha }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] }_\mathrm{ Part.\ II-2 }
-
   \end{aligned}
 $$
-```
 
 - Part. II-1
 
-```math
 $$
   \begin{aligned}
-
   \exp \Big[ - \frac{ ( x - x_0 )^2 - k_0^2 \alpha^2 - 2 ( x - x_0 ) k_0 \frac{ \hbar t }{ m } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big]
   &=
   \exp \Big[ - \frac{ ( x - x_0 - k_0 \frac{ \hbar t }{ m } )^2 - k_0^2 \frac{ \hbar^2 t^2 }{ m^2 } - k_0^2 \alpha^2 }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big]
-
   \end{aligned}
 $$
-```
 
 - Part. II-2
 
-```math
 $$
   \begin{aligned}
-
   \exp \Big[ i \frac{ ( x - x_0 )^2 \frac{ \hbar t }{ m \alpha } - k_0^2 \alpha^2 \frac{ \hbar t }{ m \alpha } + 2 ( x - x_0 ) k_0 \alpha }{ 2 \alpha( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big]
   &=
   \exp \Big[ i \frac{ \big( ( x - x_0 )^2 \frac{ \hbar t }{ m \alpha } - ( 2 ( x - x_0 ) k_0 \alpha \frac{ \hbar t }{ m \alpha } ) \frac{ \hbar t }{ m \alpha } + ( k_0^2 \alpha^2 \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) \frac{ \hbar t }{ m \alpha } \big) + ( 2 ( x - x_0 ) k_0 \alpha \frac{ \hbar t }{ m \alpha } ) \frac{ \hbar t }{ m \alpha } - ( k_0^2 \alpha^2 \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) \frac{ \hbar t }{ m \alpha } -k_0^2 \alpha^2 \frac{ \hbar t }{ m \alpha } + 2 ( x - x_0 ) k \alpha }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \\
@@ -226,15 +200,12 @@ $$
   \exp \Big[ i \frac{ ( x - x_0 - k_0 \alpha \frac{ \hbar t }{ m \alpha } )^2 \frac{ \hbar t }{ m \alpha } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \times \exp \Big[ i \Big( k_0 ( x - x_0 ) - \frac{ 1 }{ 2 } k_0^2 \alpha \frac{ \hbar t }{ m \alpha } \Big) \Big] \\
   &=
   \exp \Big[ i \frac{ ( x - x_0 - k_0 \frac{ \hbar t }{ m } )^2 \frac{ \hbar t }{ m \alpha } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \times \exp \Big[ i \Big( k_0 ( x - x_0 - \frac{ 1 }{ 2 } k_0 \frac{ \hbar t }{ m } ) \Big) \Big]
-
   \end{aligned}
 $$
-```
 
 
 ### Part. III
 
-```math
 $$
   \exp \Big[ - \frac{ \alpha k_0^2 }{ 2 } \Big]
   =
@@ -242,23 +213,18 @@ $$
   =
   \exp \Big[ - \frac{ k_0^2 \alpha^2 + k_0^2 \frac{ \hbar^2 t^2 }{ m^2 } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big]
 $$
-```
 
 Finally, we can combine all the parts together to get
 
-```math
 $$
   \begin{aligned}
-
   \psi( x, t )
   &=
   \frac{ 1 }{ ( \pi \alpha )^{ 1 / 4 } } \frac{ 1 }{ ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } )^{ 1 / 4 } } \exp \Big[ -i \frac{ 1 }{ 2 } { \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } } } \big) } \Big] \exp \Big[ - \frac{ ( x - x_0 -k_0 \frac{ \hbar t }{ m } )^2 - k_0^2 \frac{ \hbar^2 t^2 }{ m^2 } - k_0^2 \alpha^2 }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \exp \Big[ i \frac{ ( x - x_0 - k_0 \frac{ \hbar t }{ m } )^2 \frac{ \hbar t }{ m \alpha } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \exp \Big[ i \Big( k_0 ( x - x_0 - \frac{ 1 }{ 2 } k_0 \frac{ \hbar t }{ m } ) \Big) \Big] \exp \Big[ - \frac{ k_0^2 \alpha^2 + k_0^2 \frac{ \hbar^2 t^2 }{ m^2 } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \\
   &=
   \frac{ 1 }{ ( \pi \alpha )^{ 1 / 4 } } \frac{ 1 }{ ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } )^{ 1 / 4 } } \exp \Big[ -i \frac{ 1 }{ 2 } { \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } } } \big) } \Big] \exp \Big[ - \frac{ ( x - x_0 - k_0 \frac{ \hbar }{ m } t )^2 }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \exp \Big[ i \frac{ ( x - x_0 - k_0 \frac{ \hbar t }{ m } )^2 \frac{ \hbar t }{ m \alpha } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \exp \Big[ i \Big( k_0 ( x - x_0 - \frac{ 1 }{ 2 } k_0 \frac{ \hbar t }{ m } ) \Big) \Big] \\
-
   \end{aligned}
 $$
-```
 
 $$
   \begin{aligned}
