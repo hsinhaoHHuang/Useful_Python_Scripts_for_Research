@@ -357,9 +357,9 @@ $$
   \begin{aligned}
   \theta_1
   &=
-  - \frac{ 1 }{ 2 } \cos^{ -1 } ( C_1^{ - \frac{ 1 }{ 2 } } ) \\
+  -\frac{ 1 }{ 2 } \cos^{ -1 } ( C_1^{ - \frac{ 1 }{ 2 } } ) \\
   &=
-  - \frac{ 1 }{ 2 } \cos^{ -1 } \Big( \frac{ 1 }{ \sqrt{ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 } } \Big)
+  -\frac{ 1 }{ 2 } \cos^{ -1 } \Big( \frac{ 1 }{ \sqrt{ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 } } \Big)
   \end{aligned}
 $$
 
@@ -379,13 +379,11 @@ $$
 
 $$
   \begin{aligned}
-
   \theta_2
   &=
   \frac{ 1 }{ 2 }( x - v_0 t - x_0 )^2 \frac{ \frac{ m }{ \hbar} t }{ ( \frac{ m }{ \hbar } w_0^2 )^2 + t^2 } + v_0 \frac{ m }{ \hbar }( x - \frac{ 1 }{ 2 } v_0 t - x_0 ) \\
   &=
   \frac{ 1 }{ 2 } ( x - x_0 -v_0 t )^2 \frac{ ( \frac{ \hbar t }{ m w_0^2 } ) }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } + v_0 \frac{ m }{ \hbar }( x - x_0 - \frac{ 1 }{ 2 } v_0 t )
-
   \end{aligned}
 $$
 
