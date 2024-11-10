@@ -129,15 +129,13 @@ $$
 
 Here, we introduce the new parameter, $\alpha = w_0^2 = 2 \sigma_{ x, 0 }^2$, to simplify the equation
 
-```math
 $$
   \psi( x, t ) =
   \frac{ 1 }{ \sqrt{ \sqrt{ \pi \alpha } } }
-  \underbrace{ \sqrt{ \frac{ \alpha }{ \alpha + i \frac{ \hbar }{ m } t } } }_\mathrm{ Part.\ I }
-  \underbrace{ \exp \Big[ - \frac{ ( x - x_0 - i k_0 \alpha )^2 }{ 2 ( \alpha + i \frac{ \hbar }{ m } t ) } \Big] }_\mathrm{ Part.\ II }
-  \underbrace{ \exp \Big[ - \frac{ \alpha k_0^2 }{ 2 } \Big] }_\mathrm{ Part.\ III }
+  \underbrace{ \sqrt{ \frac{ \alpha }{ \alpha + i \frac{ \hbar }{ m } t } } } _\mathrm{ Part.\ I }
+  \underbrace{ \exp \Big[ - \frac{ ( x - x_0 - i k_0 \alpha )^2 }{ 2 ( \alpha + i \frac{ \hbar }{ m } t ) } \Big] } _\mathrm{ Part.\ II }
+  \underbrace{ \exp \Big[ - \frac{ \alpha k_0^2 }{ 2 } \Big] } _\mathrm{ Part.\ III }
 $$
-```
 
 Let’s break it down and simplify each part
 
@@ -171,9 +169,9 @@ $$
   &=
   \exp \Big[ - \frac{ \big( ( x - x_0 )^2 -k_0^2 \alpha^2 - 2 ( x - x_0 ) k_0 \alpha \frac{ \hbar t }{ m \alpha } \big) - i \big( ( x - x_0 )^2 \frac{ \hbar t }{ m \alpha } - k_0^2 \alpha^2 \frac{ \hbar t }{ m \alpha } + 2 ( x - x_0 ) k_0 \alpha \big) }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \\
   &=
-  \underbrace{ \exp \Big[ - \frac{ ( x - x_0 )^2 - k_0^2 \alpha^2 - 2 ( x - x_0 ) k_0 \frac{ \hbar t }{ m } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] }_\mathrm{ Part.\ II-1 }
+  \underbrace{ \exp \Big[ - \frac{ ( x - x_0 )^2 - k_0^2 \alpha^2 - 2 ( x - x_0 ) k_0 \frac{ \hbar t }{ m } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] } _\mathrm{ Part.\ II-1 }
   \times
-  \underbrace{ \exp \Big[ i \frac{ ( x - x_0 )^2 \frac{ \hbar t }{ m \alpha } - k_0^2 \alpha^2 \frac{ \hbar t }{ m \alpha } + 2 ( x - x_0 ) k_0 \alpha }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] }_\mathrm{ Part.\ II-2 }
+  \underbrace{ \exp \Big[ i \frac{ ( x - x_0 )^2 \frac{ \hbar t }{ m \alpha } - k_0^2 \alpha^2 \frac{ \hbar t }{ m \alpha } + 2 ( x - x_0 ) k_0 \alpha }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] } _\mathrm{ Part.\ II-2 }
   \end{aligned}
 $$
 
@@ -207,10 +205,8 @@ $$
 ### Part. III
 
 $$
-  \exp \Big[ - \frac{ \alpha k_0^2 }{ 2 } \Big]
-  =
-  \exp \Big[ - \frac{ \alpha^2 k_0^2 ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big]
-  =
+  \exp \Big[ - \frac{ \alpha k_0^2 }{ 2 } \Big] =
+  \exp \Big[ - \frac{ \alpha^2 k_0^2 ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] =
   \exp \Big[ - \frac{ k_0^2 \alpha^2 + k_0^2 \frac{ \hbar^2 t^2 }{ m^2 } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big]
 $$
 
