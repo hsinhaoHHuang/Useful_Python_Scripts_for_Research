@@ -219,12 +219,6 @@ $$
   \frac{ 1 }{ ( \pi \alpha )^{ 1 / 4 } } \frac{ 1 }{ ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } )^{ 1 / 4 } } \exp \Big[ -i \frac{ 1 }{ 2 } { \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } } } \big) } \Big] \exp \Big[ - \frac{ ( x - x_0 -k_0 \frac{ \hbar t }{ m } )^2 - k_0^2 \frac{ \hbar^2 t^2 }{ m^2 } - k_0^2 \alpha^2 }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \exp \Big[ i \frac{ ( x - x_0 - k_0 \frac{ \hbar t }{ m } )^2 \frac{ \hbar t }{ m \alpha } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \exp \Big[ i \Big( k_0 ( x - x_0 - \frac{ 1 }{ 2 } k_0 \frac{ \hbar t }{ m } ) \Big) \Big] \exp \Big[ - \frac{ k_0^2 \alpha^2 + k_0^2 \frac{ \hbar^2 t^2 }{ m^2 } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \\
   &=
   \frac{ 1 }{ ( \pi \alpha )^{ 1 / 4 } } \frac{ 1 }{ ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } )^{ 1 / 4 } } \exp \Big[ -i \frac{ 1 }{ 2 } { \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } } } \big) } \Big] \exp \Big[ - \frac{ ( x - x_0 - k_0 \frac{ \hbar }{ m } t )^2 }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \exp \Big[ i \frac{ ( x - x_0 - k_0 \frac{ \hbar t }{ m } )^2 \frac{ \hbar t }{ m \alpha } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \exp \Big[ i \Big( k_0 ( x - x_0 - \frac{ 1 }{ 2 } k_0 \frac{ \hbar t }{ m } ) \Big) \Big] \\
-  \end{aligned}
-$$
-
-$$
-  \begin{aligned}
-  \psi( x, t )
   &=
   \frac{ 1 }{ ( \pi w_0^2 )^{ 1 / 4 } } \frac{ 1 }{ [ 1 + \frac{ \hbar^2 t^2 }{ m^2 ( w_0^2 )^2 } ]^{ 1 / 4 } } \exp \Big[ -i \frac{ 1 }{ 2 } { \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + \frac{ \hbar^2 t^2 }{ m^2 ( w_0^2 )^2 } } } \big) } \Big] \exp \Big[ - \frac{ ( x - x_0 - v_0 t )^2 }{ 2 ( w_0^2 ) ( 1 + \frac{ \hbar^2 t^2 }{ m^2 ( w_0^2 )^2 } ) } \Big] \exp \Big[ i \frac{ ( x - x_0 - v_0 t )^2 \frac{ \hbar t }{ m ( w_0^2 ) } }{ 2 ( w_0 )^2 ( 1 + \frac{ \hbar^2 t^2 }{ m^2 ( w_0^2 )^2 } ) } \Big] \exp \Big[ i \Big( v_0 \frac{ m }{ \hbar } ( x - x_0 - \frac{ 1 }{ 2 } v_0 t \Big) \Big] \\
   &=
@@ -333,7 +327,7 @@ $$
   &=
   \frac{ 1 }{ 2 }( x - v_0 t - x_0 )^2 \frac{ \frac{ m }{ \hbar} t }{ ( \frac{ m }{ \hbar } w_0^2 )^2 + t^2 } + v_0 \frac{ m }{ \hbar }( x - \frac{ 1 }{ 2 } v_0 t - x_0 ) \\
   &=
-  \frac{ 1 }{ 2 } ( x - x_0 -v_0 t )^2 \frac{ ( \frac{ \hbar t }{ m w_0^2 } ) }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } + v_0 \frac{ m }{ \hbar }( x - x_0 - \frac{ 1 }{ 2 } v_0 t )
+  \frac{ 1 }{ 2 } ( x - x_0 - v_0 t )^2 \frac{ ( \frac{ \hbar t }{ m w_0^2 } ) }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } + v_0 \frac{ m }{ \hbar }( x - x_0 - \frac{ 1 }{ 2 } v_0 t )
   \end{aligned}
 $$
 
@@ -359,7 +353,7 @@ $$
   &=
   C_2 e^{ i ( \theta_1 + \theta_2 ) }\\
   &=
-  \frac{ 1 }{ \{ \pi w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] \}^{ 1 / 4 } } \exp \Big[ { - \frac{ 1 }{ 2 } \frac{ ( x - x_0 -v_0 t )^2 }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } } \Big] \exp \Big[ i \Big( - \frac{ 1 }{ 2 } \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 } } \big ) + \frac{ 1 }{ 2 }( x - x_0 - v_0 t )^2 \frac{ ( \frac{ \hbar t }{ m w_0^2 } ) }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } + v_0 \frac{ m }{ \hbar }( x - x_0 - \frac{ 1 }{ 2 } v_0 t ) \Big) \Big] \\
+  \frac{ 1 }{ \{ \pi w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] \}^{ 1 / 4 } } \exp \Big[ { - \frac{ 1 }{ 2 } \frac{ ( x - x_0 - v_0 t )^2 }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } } \Big] \exp \Big[ i \Big( - \frac{ 1 }{ 2 } \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 } } \big ) + \frac{ 1 }{ 2 }( x - x_0 - v_0 t )^2 \frac{ ( \frac{ \hbar t }{ m w_0^2 } ) }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } + v_0 \frac{ m }{ \hbar }( x - x_0 - \frac{ 1 }{ 2 } v_0 t ) \Big) \Big] \\
   &=
   \frac{ 1 }{ \{ 2 \pi \sigma_{ x, 0 }^2 [ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 ] \}^{ 1 / 4 } } \exp \Big[ { - \frac{ 1 }{ 2 } \frac{ ( x - x_0 - v_0 t )^2 }{ 2 \sigma_{ x, 0 }^2 [ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 ] } } \Big] \exp \Big[ i \Big( - \frac{ 1 }{ 2 } \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x , 0 }^2 } )^2 } } \big) + \frac{ 1 }{ 2 } ( x - x_0 - v_0 t )^2 \frac{ ( \frac{ \hbar t }{ 2 m \sigma_{ x , 0 }^2 } ) }{ 2 \sigma_{ x, 0 }^2 [ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 ] } + v_0 \frac{ m }{ \hbar } ( x - x_0 - \frac{ 1 }{ 2 } v_0 t ) \Big) \Big]
   \end{aligned}
