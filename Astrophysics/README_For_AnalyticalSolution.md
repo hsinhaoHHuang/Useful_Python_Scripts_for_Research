@@ -141,6 +141,7 @@ $$
 
 Here, we introduce the new parameter, $\alpha = w_0^2 = 2 \sigma_{ x, 0 }^2$, to simplify the equation
 
+```math
 $$
   \psi( x, t ) =
   \frac{ 1 }{ \sqrt{ \sqrt{ \pi \alpha } } }
@@ -148,6 +149,7 @@ $$
   \underbrace{ \exp \Big[ - \frac{ ( x - x_0 - i k_0 \alpha )^2 }{ 2 ( \alpha + i \frac{ \hbar }{ m } t ) } \Big] }_\mathrm{ Part.\ II }
   \underbrace{ \exp \Big[ - \frac{ \alpha k_0^2 }{ 2 } \Big] }_\mathrm{ Part.\ III }
 $$
+```
 
 Let’s break it down and simplify each part
 
@@ -197,37 +199,37 @@ $$
 
 - Part. II-1
 
-    ```math
-    $$
-      \begin{aligned}
+```math
+$$
+  \begin{aligned}
 
-      \exp \Big[ - \frac{ ( x - x_0 )^2 - k_0^2 \alpha^2 - 2 ( x - x_0 ) k_0 \frac{ \hbar t }{ m } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big]
-      &=
-      \exp \Big[ - \frac{ ( x - x_0 - k_0 \frac{ \hbar t }{ m } )^2 - k_0^2 \frac{ \hbar^2 t^2 }{ m^2 } - k_0^2 \alpha^2 }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big]
+  \exp \Big[ - \frac{ ( x - x_0 )^2 - k_0^2 \alpha^2 - 2 ( x - x_0 ) k_0 \frac{ \hbar t }{ m } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big]
+  &=
+  \exp \Big[ - \frac{ ( x - x_0 - k_0 \frac{ \hbar t }{ m } )^2 - k_0^2 \frac{ \hbar^2 t^2 }{ m^2 } - k_0^2 \alpha^2 }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big]
 
-      \end{aligned}
-    $$
-    ```
+  \end{aligned}
+$$
+```
 
 - Part. II-2
 
-    ```math
-    $$
-      \begin{aligned}
+```math
+$$
+  \begin{aligned}
 
-      \exp \Big[ i \frac{ ( x - x_0 )^2 \frac{ \hbar t }{ m \alpha } - k_0^2 \alpha^2 \frac{ \hbar t }{ m \alpha } + 2 ( x - x_0 ) k_0 \alpha }{ 2 \alpha( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big]
-      &=
-      \exp \Big[ i \frac{ \big( ( x - x_0 )^2 \frac{ \hbar t }{ m \alpha } - ( 2 ( x - x_0 ) k_0 \alpha \frac{ \hbar t }{ m \alpha } ) \frac{ \hbar t }{ m \alpha } + ( k_0^2 \alpha^2 \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) \frac{ \hbar t }{ m \alpha } \big) + ( 2 ( x - x_0 ) k_0 \alpha \frac{ \hbar t }{ m \alpha } ) \frac{ \hbar t }{ m \alpha } - ( k_0^2 \alpha^2 \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) \frac{ \hbar t }{ m \alpha } -k_0^2 \alpha^2 \frac{ \hbar t }{ m \alpha } + 2 ( x - x_0 ) k \alpha }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \\
-      &=
-      \exp \Big[ i \frac{ \big( ( x - x_0 -k_0 \alpha \frac{ \hbar t }{ m \alpha } )^2 \frac{ \hbar t }{ m \alpha } \big) + 2 ( x - x_0 ) k_0 \alpha \big( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } \big) - k_0^2 \alpha^2 \frac{ \hbar t }{ m \alpha } \big( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } \big) }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \\
-      &=
-      \exp \Big[ i \frac{ ( x - x_0 - k_0 \alpha \frac{ \hbar t }{ m \alpha } )^2 \frac{ \hbar t }{ m \alpha } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \times \exp \Big[ i \Big( k_0 ( x - x_0 ) - \frac{ 1 }{ 2 } k_0^2 \alpha \frac{ \hbar t }{ m \alpha } \Big) \Big] \\
-      &=
-      \exp \Big[ i \frac{ ( x - x_0 - k_0 \frac{ \hbar t }{ m } )^2 \frac{ \hbar t }{ m \alpha } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \times \exp \Big[ i \Big( k_0 ( x - x_0 - \frac{ 1 }{ 2 } k_0 \frac{ \hbar t }{ m } ) \Big) \Big]
+  \exp \Big[ i \frac{ ( x - x_0 )^2 \frac{ \hbar t }{ m \alpha } - k_0^2 \alpha^2 \frac{ \hbar t }{ m \alpha } + 2 ( x - x_0 ) k_0 \alpha }{ 2 \alpha( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big]
+  &=
+  \exp \Big[ i \frac{ \big( ( x - x_0 )^2 \frac{ \hbar t }{ m \alpha } - ( 2 ( x - x_0 ) k_0 \alpha \frac{ \hbar t }{ m \alpha } ) \frac{ \hbar t }{ m \alpha } + ( k_0^2 \alpha^2 \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) \frac{ \hbar t }{ m \alpha } \big) + ( 2 ( x - x_0 ) k_0 \alpha \frac{ \hbar t }{ m \alpha } ) \frac{ \hbar t }{ m \alpha } - ( k_0^2 \alpha^2 \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) \frac{ \hbar t }{ m \alpha } -k_0^2 \alpha^2 \frac{ \hbar t }{ m \alpha } + 2 ( x - x_0 ) k \alpha }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \\
+  &=
+  \exp \Big[ i \frac{ \big( ( x - x_0 -k_0 \alpha \frac{ \hbar t }{ m \alpha } )^2 \frac{ \hbar t }{ m \alpha } \big) + 2 ( x - x_0 ) k_0 \alpha \big( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } \big) - k_0^2 \alpha^2 \frac{ \hbar t }{ m \alpha } \big( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } \big) }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \\
+  &=
+  \exp \Big[ i \frac{ ( x - x_0 - k_0 \alpha \frac{ \hbar t }{ m \alpha } )^2 \frac{ \hbar t }{ m \alpha } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \times \exp \Big[ i \Big( k_0 ( x - x_0 ) - \frac{ 1 }{ 2 } k_0^2 \alpha \frac{ \hbar t }{ m \alpha } \Big) \Big] \\
+  &=
+  \exp \Big[ i \frac{ ( x - x_0 - k_0 \frac{ \hbar t }{ m } )^2 \frac{ \hbar t }{ m \alpha } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \times \exp \Big[ i \Big( k_0 ( x - x_0 - \frac{ 1 }{ 2 } k_0 \frac{ \hbar t }{ m } ) \Big) \Big]
 
-      \end{aligned}
-    $$
-    ```
+  \end{aligned}
+$$
+```
 
 
 ### Part. III
@@ -315,121 +317,94 @@ $$
 
 - `Gau_v0`
 
-    ```math
-    $$
-      v_0
-    $$
-    ```
+$$
+  v_0
+$$
 
 - `Gau_Width`
 
-    ```math
-    $$
-      w_0 = \sqrt{ \alpha } = \sqrt{ 2 } \times \sigma_{ x, 0 }
-    $$
-    ```
+$$
+  w_0 = \sqrt{ \alpha } = \sqrt{ 2 } \times \sigma_{ x, 0 }
+$$
 
 - `Gau_Center`
 
-    ```math
-    $$
-      x_0
-    $$
-    ```
+$$
+  x_0
+$$
 
 - `ELBDM_ETA`
 
-    ```math
-    $$
-      \frac{ m }{ \hbar }
-    $$
-    ```
+$$
+  \frac{ m }{ \hbar }
+$$
 
 - `Gau_Const1`
 
-    ```math
-    $$
-      \begin{aligned}
-
-      C_1
-      &=
-      1 + \Big( \frac{ t }{ \frac{ m }{ \hbar } w_0^2 } \Big)^2 \\
-      &=
-      1 + \Big( \frac{ \hbar t }{ m w_0^2 } \Big)^2
-
-      \end{aligned}
-    $$
-    ```
+$$
+  \begin{aligned}
+  C_1
+  &=
+  1 + \Big( \frac{ t }{ \frac{ m }{ \hbar } w_0^2 } \Big)^2 \\
+  &=
+  1 + \Big( \frac{ \hbar t }{ m w_0^2 } \Big)^2
+  \end{aligned}
+$$
 
 - `Gau_Theta1`
 
-    ```math
-    $$
-      \begin{aligned}
-
-      \theta_1
-      &=
-      - \frac{ 1 }{ 2 } \cos^{ -1 } ( C_1^{ - \frac{ 1 }{ 2 } } ) \\
-      &=
-      - \frac{ 1 }{ 2 } \cos^{ -1 } \Big( \frac{ 1 }{ \sqrt{ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 } } \Big)
-
-      \end{aligned}
-    $$
-    ```
+$$
+  \begin{aligned}
+  \theta_1
+  &=
+  - \frac{ 1 }{ 2 } \cos^{ -1 } ( C_1^{ - \frac{ 1 }{ 2 } } ) \\
+  &=
+  - \frac{ 1 }{ 2 } \cos^{ -1 } \Big( \frac{ 1 }{ \sqrt{ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 } } \Big)
+  \end{aligned}
+$$
 
 - `Gau_Const2`
 
-    ```math
-    $$
-      \begin{aligned}
-
-      C_2
-      &=
-      ( w_0^2 \pi C_1 )^{-1/4} \exp \Big[ - \frac{ 1 }{ 2 } \Big( \frac{ ( x - v_0 t - x_0 )^2 }{ w_0^2 C_1 } \Big) \Big] \\
-      &=
-      \frac{ 1 }{ \{ \pi w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] \}^{ 1 / 4 } } \exp \Big[ { - \frac{ 1 }{ 2 } \frac{ ( x - x_0 - v_0 t )^2 }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } } \Big]
-
-      \end{aligned}
-    $$
-    ```
+$$
+  \begin{aligned}
+  C_2
+  &=
+  ( w_0^2 \pi C_1 )^{-1/4} \exp \Big[ - \frac{ 1 }{ 2 } \Big( \frac{ ( x - v_0 t - x_0 )^2 }{ w_0^2 C_1 } \Big) \Big] \\
+  &=
+  \frac{ 1 }{ \{ \pi w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] \}^{ 1 / 4 } } \exp \Big[ { - \frac{ 1 }{ 2 } \frac{ ( x - x_0 - v_0 t )^2 }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } } \Big]
+  \end{aligned}
+$$
 
 - `Gau_Theta2`
 
-    ```math
-    $$
-      \begin{aligned}
+$$
+  \begin{aligned}
 
-      \theta_2
-      &=
-      \frac{ 1 }{ 2 }( x - v_0 t - x_0 )^2 \frac{ \frac{ m }{ \hbar} t }{ ( \frac{ m }{ \hbar } w_0^2 )^2 + t^2 } + v_0 \frac{ m }{ \hbar }( x - \frac{ 1 }{ 2 } v_0 t - x_0 ) \\
-      &=
-      \frac{ 1 }{ 2 } ( x - x_0 -v_0 t )^2 \frac{ ( \frac{ \hbar t }{ m w_0^2 } ) }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } + v_0 \frac{ m }{ \hbar }( x - x_0 - \frac{ 1 }{ 2 } v_0 t )
+  \theta_2
+  &=
+  \frac{ 1 }{ 2 }( x - v_0 t - x_0 )^2 \frac{ \frac{ m }{ \hbar} t }{ ( \frac{ m }{ \hbar } w_0^2 )^2 + t^2 } + v_0 \frac{ m }{ \hbar }( x - \frac{ 1 }{ 2 } v_0 t - x_0 ) \\
+  &=
+  \frac{ 1 }{ 2 } ( x - x_0 -v_0 t )^2 \frac{ ( \frac{ \hbar t }{ m w_0^2 } ) }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } + v_0 \frac{ m }{ \hbar }( x - x_0 - \frac{ 1 }{ 2 } v_0 t )
 
-      \end{aligned}
-    $$
-    ```
+  \end{aligned}
+$$
 
 - Real part of the wave function
 
-```math
 $$
   \mathrm{ Re }[ \psi ] = C_2 \cos( \theta_1 + \theta_2 )
 $$
-```
 
 - Imaginary part of the wave function
 
-```math
 $$
   \mathrm{ Im }[ \psi ] = C_2 \sin( \theta_1 + \theta_2 )
 $$
-```
 
 ## Wave function
 
 $$
   \begin{aligned}
-
   \psi
   &=
   \mathrm{ Re }[ \psi ] + i \mathrm{ Im }[ \psi ] \\
@@ -439,7 +414,6 @@ $$
   \frac{ 1 }{ \{ \pi w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] \}^{ 1 / 4 } } \exp \Big[ { - \frac{ 1 }{ 2 } \frac{ ( x - x_0 -v_0 t )^2 }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } } \Big] \exp \Big[ i \Big( - \frac{ 1 }{ 2 } \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 } } \big ) + \frac{ 1 }{ 2 }( x - x_0 - v_0 t )^2 \frac{ ( \frac{ \hbar t }{ m w_0^2 } ) }{ w_0^2 [ 1 + ( \frac{ \hbar t }{ m w_0^2 } )^2 ] } + v_0 \frac{ m }{ \hbar }( x - x_0 - \frac{ 1 }{ 2 } v_0 t ) \Big) \Big] \\
   &=
   \frac{ 1 }{ \{ 2 \pi \sigma_{ x, 0 }^2 [ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 ] \}^{ 1 / 4 } } \exp \Big[ { - \frac{ 1 }{ 2 } \frac{ ( x - x_0 - v_0 t )^2 }{ 2 \sigma_{ x, 0 }^2 [ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 ] } } \Big] \exp \Big[ i \Big( - \frac{ 1 }{ 2 } \cos^{ -1 } \big( \frac{ 1 }{ \sqrt{ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x , 0 }^2 } )^2 } } \big) + \frac{ 1 }{ 2 } ( x - x_0 - v_0 t )^2 \frac{ ( \frac{ \hbar t }{ 2 m \sigma_{ x , 0 }^2 } ) }{ 2 \sigma_{ x, 0 }^2 [ 1 + ( \frac{ \hbar t }{ 2 m \sigma_{ x, 0 }^2 } )^2 ] } + v_0 \frac{ m }{ \hbar } ( x - x_0 - \frac{ 1 }{ 2 } v_0 t ) \Big) \Big]
-
   \end{aligned}
 $$
 
