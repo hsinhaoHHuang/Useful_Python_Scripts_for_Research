@@ -142,8 +142,7 @@ $$
 Here, we introduce the new parameter, $\alpha = w_0^2 = 2 \sigma_{ x, 0 }^2$, to simplify the equation
 
 $$
-  \psi( x, t )
-  =
+  \psi( x, t ) =
   \frac{ 1 }{ \sqrt{ \sqrt{ \pi \alpha } } }
   \underbrace{ \sqrt{ \frac{ \alpha }{ \alpha + i \frac{ \hbar }{ m } t } } }_\mathrm{ Part.\ I }
   \underbrace{ \exp \Big[ - \frac{ ( x - x_0 - i k_0 \alpha )^2 }{ 2 ( \alpha + i \frac{ \hbar }{ m } t ) } \Big] }_\mathrm{ Part.\ II }
