@@ -27,7 +27,7 @@ and the amplitudes of different plane wave wavelengths $A( k )$ follow a Gaussia
 ## Center of the Gaussian distribution in k-space
 
 $$
-  k_0 = \mathrm{ center\ of\ the~initial~density~distribution~in~k~space~ } \tilde{ \rho }( k, t=0 ) = | \tilde{ \psi }( k, t=0 ) |^2
+  k_0 = \mathrm{ center\ of\ the\ initial\ density\ distribution\ in\ k\ space\ } \tilde{ \rho }( k, t=0 ) = | \tilde{ \psi }( k, t=0 ) |^2
 $$
 
 - The velocity of the center of the wave packet in x-space = the group velocity of the central k-mode =
@@ -39,11 +39,9 @@ $$
 
 ## Width of the Gaussian distribution in k-space
 
-```math
 $$
-  \sigma_{ k, 0 } = \mathrm{ standard~deviation~of~the~initial~density~distribution~in~k~space~ } \tilde{ \rho }( k, t=0 ) = | \tilde{ \psi }( k, t=0 ) |^2
+  \sigma_{ k, 0 } = \mathrm{ standard\ deviation\ of\ the\ initial\ density\ distribution\ in\ k\ space\ } \tilde{ \rho }( k, t=0 ) = | \tilde{ \psi }( k, t=0 ) |^2
 $$
-```
 
 ## Wave function in k-space
 
@@ -51,11 +49,9 @@ At $t=0$, the density in k-space is a Gaussian distribution with the center $k_0
 
 The corresponding wave function is
 
-```math
 $$
   \tilde{ \psi }( k, t=0 ) = \frac{ 1 }{ \sqrt{ \sigma_{ k, 0 } \sqrt{ 2 \pi } } } \exp \Big[ - \frac{ ( k - k_0 )^2 }{ 4 \sigma_{ k, 0 }^2 } \Big]
 $$
-```
 
 - The normalization of the wave function in k-space: $\int_{-\infty}^{\infty} |\tilde{\psi}(k, t=0)|^2 dk = 1$
 
@@ -82,38 +78,30 @@ $$
 
 ## Center of the Gaussian distribution in x-space
 
-```math
 $$
-  x_0 = \mathrm{ center~of~the~initial~density~distribution~ } \rho( x, t=0 ) = | \psi( x, t=0 ) |^2
+  x_0 = \mathrm{ center\ of\ the\ initial\ density\ distribution\ } \rho( x, t=0 ) = | \psi( x, t=0 ) |^2
 $$
-```
 
 ## Width of the Gaussian distribution in x-space
 
-```math
 $$
-  \sigma_{ x, 0 } = \mathrm{ standard~deviation~of~the~initial~density~distribution~ } \rho( x, t=0 ) = | \psi( x, t=0 ) |^2
+  \sigma_{ x, 0 } = \mathrm{ standard\ deviation\ of\ the\ initial\ density\ distribution\ } \rho( x, t=0 ) = | \psi( x, t=0 ) |^2
 $$
-```
 
 - The width of the Gaussian distribution in x-space and in k-space are inversely proportional to each other, which is the uncertainty principle
 
-    ```math
-    $$
-      \sigma_{ x, 0 } \times \sigma_{ k, 0 } = \frac{ 1 }{ 2 }
-    $$
-    ```
+$$
+  \sigma_{ x, 0 } \times \sigma_{ k, 0 } = \frac{ 1 }{ 2 }
+$$
 
 
 ## Wave function in x-space
 
 The wave function in the x-space is the inverse Fourier transform of the wave function in the k-space
 
-```math
 $$
   \psi( x^\prime, t ) = \frac{ 1 }{ \sqrt{ 2 \pi } } \int_{ -\infty }^{ \infty } \tilde{ \psi }( k, t ) e^{ i k x^\prime } dk
 $$
-```
 
 where $x^\prime = x - x_0$.
 
@@ -153,16 +141,14 @@ $$
 
 Here, we introduce the new parameter, $\alpha = w_0^2 = 2 \sigma_{ x, 0 }^2$, to simplify the equation
 
-```math
 $$
   \psi( x, t )
   =
   \frac{ 1 }{ \sqrt{ \sqrt{ \pi \alpha } } }
-  \underbrace{ \sqrt{ \frac{ \alpha }{ \alpha + i \frac{ \hbar }{ m } t } } }_\mathrm{ Part.~I }
-  \underbrace{ \exp \Big[ - \frac{ ( x - x_0 - i k_0 \alpha )^2 }{ 2 ( \alpha + i \frac{ \hbar }{ m } t ) } \Big] }_\mathrm{ Part.~II }
-  \underbrace{ \exp \Big[ - \frac{ \alpha k_0^2 }{ 2 } \Big] }_\mathrm{ Part.~ III }
+  \underbrace{ \sqrt{ \frac{ \alpha }{ \alpha + i \frac{ \hbar }{ m } t } } }_\mathrm{ Part.\ I }
+  \underbrace{ \exp \Big[ - \frac{ ( x - x_0 - i k_0 \alpha )^2 }{ 2 ( \alpha + i \frac{ \hbar }{ m } t ) } \Big] }_\mathrm{ Part.\ II }
+  \underbrace{ \exp \Big[ - \frac{ \alpha k_0^2 }{ 2 } \Big] }_\mathrm{ Part.\ III }
 $$
-```
 
 Let’s break it down and simplify each part
 
@@ -202,9 +188,9 @@ $$
   &=
   \exp \Big[ - \frac{ \big( ( x - x_0 )^2 -k_0^2 \alpha^2 - 2 ( x - x_0 ) k_0 \alpha \frac{ \hbar t }{ m \alpha } \big) - i \big( ( x - x_0 )^2 \frac{ \hbar t }{ m \alpha } - k_0^2 \alpha^2 \frac{ \hbar t }{ m \alpha } + 2 ( x - x_0 ) k_0 \alpha \big) }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] \\
   &=
-  \underbrace{ \exp \Big[ - \frac{ ( x - x_0 )^2 - k_0^2 \alpha^2 - 2 ( x - x_0 ) k_0 \frac{ \hbar t }{ m } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] }_\mathrm{ Part.~II-1 }
+  \underbrace{ \exp \Big[ - \frac{ ( x - x_0 )^2 - k_0^2 \alpha^2 - 2 ( x - x_0 ) k_0 \frac{ \hbar t }{ m } }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] }_\mathrm{ Part.\ II-1 }
   \times
-  \underbrace{ \exp \Big[ i \frac{ ( x - x_0 )^2 \frac{ \hbar t }{ m \alpha } - k_0^2 \alpha^2 \frac{ \hbar t }{ m \alpha } + 2 ( x - x_0 ) k_0 \alpha }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] }_\mathrm{ Part.~II-2 }
+  \underbrace{ \exp \Big[ i \frac{ ( x - x_0 )^2 \frac{ \hbar t }{ m \alpha } - k_0^2 \alpha^2 \frac{ \hbar t }{ m \alpha } + 2 ( x - x_0 ) k_0 \alpha }{ 2 \alpha ( 1 + \frac{ \hbar^2 t^2 }{ m^2 \alpha^2 } ) } \Big] }_\mathrm{ Part.\ II-2 }
 
   \end{aligned}
 $$
