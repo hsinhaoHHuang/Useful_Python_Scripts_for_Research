@@ -5,21 +5,17 @@
 
 The Gaussian wave packet is a solution of the free-particle Schrodinger equation,
 
-```math
 $$
   i \hbar \frac{ \partial }{ \partial t } \psi( x, t ) = - \frac{ \hbar^2 }{ 2 m } \frac{ \partial^2 }{ \partial x^2 } \psi( x, t )
 $$
-```
 
 where $\psi( x, t )$ is the wave function in x-space, $m$ is the particle mass, and $\hbar$ is the reduced Planck constant.
 
 Its wave function can be seen as a superposition of the plane waves, $A( k ) e^{ i ( k x - \omega t ) }$, where the angular frequency $\omega$ and the wavenumber $k$ follow the dispersion relation
 
-```math
 $$
   \omega = \frac{ \hbar k^2 }{ 2 m }
 $$
-```
 
 and the amplitudes of different plane wave wavelengths $A( k )$ follow a Gaussian distribution.
 
@@ -30,11 +26,9 @@ and the amplitudes of different plane wave wavelengths $A( k )$ follow a Gaussia
 
 ## Center of the Gaussian distribution in k-space
 
-```math
 $$
   k_0 = \mathrm{ center~of~the~initial~density~distribution~in~k~space~ } \tilde{ \rho }( k, t=0 ) = | \tilde{ \psi }( k, t=0 ) |^2
 $$
-```
 
 - The velocity of the center of the wave packet in x-space = the group velocity of the central k-mode =
 
